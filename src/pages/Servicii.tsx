@@ -1,57 +1,112 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Clock, Users, Sparkles, Brain, Heart, Shield, Target, Flower2 } from "lucide-react";
+import { ArrowRight, Clock, Users, Sparkles, Brain, Heart, Shield, Target, Flower2, Check, MessageCircle, Video, Building } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/layout/Layout";
+import FAQSection from "@/components/sections/FAQSection";
+import CTASection from "@/components/sections/CTASection";
 
 const services = [
   {
     icon: Brain,
     title: "Terapie pentru Anxietate",
     description: "Gestionarea anxietății, atacurilor de panică și a stresului cronic prin tehnici validate științific.",
-    details: ["Tehnici de relaxare", "Restructurare cognitivă", "Mindfulness", "Expunere graduală"],
+    details: ["Tehnici de relaxare și respirație", "Restructurare cognitivă", "Mindfulness aplicat", "Expunere graduală"],
+    forWhom: "Pentru tine dacă simți neliniște constantă, atacuri de panică, griji excesive sau evitare.",
   },
   {
     icon: Heart,
     title: "Terapie pentru Depresie",
     description: "Sprijin în procesul de recuperare, reconstrucția motivației și a sensului vieții.",
     details: ["Activare comportamentală", "Procesare emoțională", "Reconstrucție cognitivă", "Prevenție recăderi"],
+    forWhom: "Pentru tine dacă simți tristețe persistentă, lipsă de energie, pierderea interesului sau gânduri negative.",
   },
   {
     icon: Shield,
     title: "Lucrul cu Trauma",
     description: "Procesarea experiențelor traumatice într-un ritm sigur și respectuos.",
     details: ["Stabilizare emoțională", "Procesare trauma", "Integrare resurse", "Vindecare relațională"],
+    forWhom: "Pentru tine dacă ai trecut prin experiențe dureroase care încă te afectează emoțional.",
   },
   {
     icon: Users,
     title: "Dificultăți Relaționale",
     description: "Înțelegerea tiparelor relaționale și dezvoltarea unor relații mai sănătoase.",
     details: ["Comunicare asertivă", "Limite sănătoase", "Dependență emoțională", "Îmbunătățire relații"],
+    forWhom: "Pentru tine dacă te confrunți cu conflicte repetitive, dificultăți de comunicare sau relații toxice.",
   },
   {
     icon: Target,
     title: "Dezvoltare Personală",
     description: "Claritate interioară, autocunoaștere și realizarea potențialului personal.",
     details: ["Definirea obiectivelor", "Creșterea încrederii", "Luarea deciziilor", "Autenticitate"],
+    forWhom: "Pentru tine dacă vrei să te cunoști mai bine, să-ți clarifici valorile și să îți atingi potențialul.",
   },
   {
     icon: Flower2,
     title: "Mindfulness și Reglare Emoțională",
     description: "Tehnici de conștientizare și echilibru emoțional pentru viața de zi cu zi.",
     details: ["Meditație ghidată", "Respirație conștientă", "Gestionare emoții", "Prezență"],
+    forWhom: "Pentru tine dacă vrei să înveți să-ți reglezi emoțiile și să fii mai prezent în viața de zi cu zi.",
   },
 ];
 
-const sessionInfo = [
+const sessionTypes = [
   {
-    title: "Prima ședință",
-    description: "O întâlnire de cunoaștere în care discutăm despre motivele pentru care cauți sprijin și stabilim obiectivele terapiei.",
-    duration: "50-60 minute",
+    icon: Building,
+    title: "Ședință la cabinet",
+    location: "Chișinău",
+    duration: "50 minute",
+    description: "Întâlnire față în față într-un spațiu sigur și confortabil, amenajat special pentru terapie.",
+    benefits: ["Contact uman direct", "Spațiu dedicat terapiei", "Fără distractori"],
   },
   {
-    title: "Ședințe ulterioare",
-    description: "Ședințe regulate în care lucrăm împreună la obiectivele stabilite, folosind tehnici adaptate nevoilor tale.",
+    icon: Video,
+    title: "Ședință online",
+    location: "Oriunde în lume",
     duration: "50 minute",
+    description: "Sesiune video securizată, ideală pentru cei din diasporă sau care nu pot ajunge la cabinet.",
+    benefits: ["Flexibilitate maximă", "Confort de acasă", "Acces din orice locație"],
+  },
+  {
+    icon: MessageCircle,
+    title: "Prima consultație",
+    location: "Cabinet sau online",
+    duration: "60 minute",
+    description: "Ședință introductivă pentru cunoaștere reciprocă, evaluare inițială și stabilirea obiectivelor.",
+    benefits: ["Cunoaștere reciprocă", "Clarificare așteptări", "Plan personalizat"],
+  },
+];
+
+const processSteps = [
+  {
+    step: "01",
+    title: "Contact inițial",
+    description: "Mă contactezi prin formular, email sau telefon pentru a stabili o întâlnire.",
+  },
+  {
+    step: "02",
+    title: "Prima ședință",
+    description: "Ne cunoaștem, discutăm despre motivele tale și stabilim obiectivele terapiei.",
+  },
+  {
+    step: "03",
+    title: "Plan terapeutic",
+    description: "Creăm împreună un plan personalizat, adaptat nevoilor și ritmului tău.",
+  },
+  {
+    step: "04",
+    title: "Ședințe regulate",
+    description: "Lucrăm săptămânal sau bisăptămânal, folosind tehnici adaptate.",
+  },
+  {
+    step: "05",
+    title: "Evaluare progres",
+    description: "Monitorizăm progresul și ajustăm abordarea după nevoie.",
+  },
+  {
+    step: "06",
+    title: "Finalizare",
+    description: "Când ești pregătit, încheiem terapia și celebrăm creșterea ta.",
   },
 ];
 
@@ -68,24 +123,98 @@ const Servicii = () => {
             <h1 className="font-heading text-4xl md:text-5xl font-semibold text-foreground mb-6 leading-tight">
               Cum te pot ajuta
             </h1>
-            <p className="text-muted-foreground text-lg md:text-xl leading-relaxed">
+            <p className="text-muted-foreground text-lg md:text-xl leading-relaxed mb-8">
               Oferim sprijin personalizat pentru diverse provocări emoționale și de viață, 
-              într-un mediu sigur și non-judgmental.
+              într-un mediu sigur și non-judgmental. Fiecare persoană este unică, iar terapia 
+              se adaptează nevoilor tale.
             </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Button asChild size="lg">
+                <Link to="/contact">
+                  Programează acum
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Link>
+              </Button>
+              <Button asChild variant="outline" size="lg">
+                <a href="#servicii">Vezi serviciile</a>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Session Types */}
+      <section className="py-20 lg:py-28 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-14">
+            <p className="text-accent font-medium mb-3 tracking-wide uppercase text-sm">
+              Tipuri de ședințe
+            </p>
+            <h2 className="font-heading text-3xl md:text-4xl font-semibold text-foreground mb-4">
+              Alege formatul potrivit pentru tine
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {sessionTypes.map((type, index) => {
+              const Icon = type.icon;
+              return (
+                <div
+                  key={index}
+                  className="bg-card rounded-2xl p-8 shadow-soft border border-border/50 hover:shadow-medium hover:-translate-y-1 transition-all duration-300"
+                >
+                  <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-6">
+                    <Icon className="w-7 h-7 text-accent" />
+                  </div>
+                  <h3 className="font-heading text-xl font-semibold text-foreground mb-2">
+                    {type.title}
+                  </h3>
+                  <div className="flex gap-4 text-sm text-muted-foreground mb-4">
+                    <span>{type.location}</span>
+                    <span>•</span>
+                    <span>{type.duration}</span>
+                  </div>
+                  <p className="text-muted-foreground mb-6 leading-relaxed">
+                    {type.description}
+                  </p>
+                  <ul className="space-y-2">
+                    {type.benefits.map((benefit, idx) => (
+                      <li key={idx} className="flex items-center gap-2 text-sm text-foreground">
+                        <Check className="w-4 h-4 text-accent" />
+                        <span>{benefit}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* Services Grid */}
-      <section className="py-20 lg:py-28 bg-background">
+      <section id="servicii" className="py-20 lg:py-28 bg-secondary scroll-mt-24">
         <div className="container mx-auto px-4">
+          <div className="text-center mb-14">
+            <p className="text-accent font-medium mb-3 tracking-wide uppercase text-sm">
+              Specializări
+            </p>
+            <h2 className="font-heading text-3xl md:text-4xl font-semibold text-foreground mb-4">
+              Domenii în care lucrez
+            </h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              Fiecare serviciu este adaptat nevoilor tale specifice, folosind tehnici validate 
+              științific din abordarea integrativă.
+            </p>
+          </div>
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => {
               const Icon = service.icon;
               return (
                 <article
                   key={index}
-                  className="group bg-card rounded-2xl p-8 shadow-soft hover:shadow-medium border border-border/50 transition-all duration-300 hover:-translate-y-1"
+                  className="group bg-background rounded-2xl p-8 shadow-soft hover:shadow-medium border border-border/50 transition-all duration-300 hover:-translate-y-1"
                 >
                   <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
                     <Icon className="w-7 h-7 text-accent" />
@@ -93,17 +222,27 @@ const Servicii = () => {
                   <h3 className="font-heading text-xl font-semibold text-foreground mb-3">
                     {service.title}
                   </h3>
-                  <p className="text-muted-foreground mb-6 leading-relaxed">
+                  <p className="text-muted-foreground mb-4 leading-relaxed">
                     {service.description}
                   </p>
-                  <ul className="space-y-2">
-                    {service.details.map((detail, idx) => (
-                      <li key={idx} className="flex items-center gap-2 text-sm text-muted-foreground">
-                        <Sparkles className="w-3 h-3 text-accent flex-shrink-0" />
-                        <span>{detail}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  
+                  <div className="mb-4">
+                    <p className="text-sm font-medium text-foreground mb-2">Ce include:</p>
+                    <ul className="space-y-1">
+                      {service.details.map((detail, idx) => (
+                        <li key={idx} className="flex items-center gap-2 text-sm text-muted-foreground">
+                          <Sparkles className="w-3 h-3 text-accent flex-shrink-0" />
+                          <span>{detail}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  
+                  <div className="pt-4 border-t border-border">
+                    <p className="text-sm text-muted-foreground italic">
+                      {service.forWhom}
+                    </p>
+                  </div>
                 </article>
               );
             })}
@@ -111,34 +250,36 @@ const Servicii = () => {
         </div>
       </section>
 
-      {/* Session Info */}
-      <section className="py-20 lg:py-28 bg-secondary">
+      {/* Process Section */}
+      <section className="py-20 lg:py-28 bg-background">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-14">
-              <h2 className="font-heading text-3xl md:text-4xl font-semibold text-foreground mb-4">
-                Cum decurge procesul terapeutic
-              </h2>
-              <p className="text-muted-foreground text-lg">
-                Fiecare persoană este unică, iar terapia este adaptată nevoilor tale specifice.
-              </p>
-            </div>
+          <div className="text-center mb-14">
+            <p className="text-accent font-medium mb-3 tracking-wide uppercase text-sm">
+              Cum funcționează
+            </p>
+            <h2 className="font-heading text-3xl md:text-4xl font-semibold text-foreground mb-4">
+              Drumul terapeutic pas cu pas
+            </h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              De la primul contact până la finalizarea terapiei, te ghidez la fiecare pas.
+            </p>
+          </div>
 
-            <div className="grid md:grid-cols-2 gap-8">
-              {sessionInfo.map((info, index) => (
+          <div className="max-w-4xl mx-auto">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {processSteps.map((step, index) => (
                 <div
                   key={index}
-                  className="bg-background rounded-2xl p-8 shadow-soft"
+                  className="relative bg-card rounded-xl p-6 border border-border/50 shadow-soft"
                 >
-                  <div className="flex items-center gap-3 mb-4">
-                    <Clock className="w-5 h-5 text-accent" />
-                    <span className="text-sm font-medium text-accent">{info.duration}</span>
-                  </div>
-                  <h3 className="font-heading text-xl font-semibold text-foreground mb-3">
-                    {info.title}
+                  <span className="absolute -top-3 -left-3 w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-bold text-sm">
+                    {step.step}
+                  </span>
+                  <h3 className="font-heading text-lg font-semibold text-foreground mb-2 mt-2">
+                    {step.title}
                   </h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {info.description}
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    {step.description}
                   </p>
                 </div>
               ))}
@@ -148,39 +289,40 @@ const Servicii = () => {
       </section>
 
       {/* Integrative Approach */}
-      <section className="py-20 lg:py-28 bg-background">
+      <section className="py-20 lg:py-28 bg-card">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="bg-primary/5 rounded-2xl p-8 md:p-12 border border-primary/10">
-              <h2 className="font-heading text-2xl md:text-3xl font-semibold text-foreground mb-6 text-center">
-                Abordare Integrativă
-              </h2>
-              <p className="text-muted-foreground text-lg leading-relaxed text-center mb-8">
-                Abordarea integrativă înseamnă că îmbin tehnici validate științific din mai multe orientări 
-                psihoterapeutice — cognitiv-comportamentală, psihodinamică, umanistă, mindfulness — 
-                adaptate nevoilor fiecărei persoane.
-              </p>
-              <div className="grid md:grid-cols-3 gap-6">
-                <div className="text-center">
-                  <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center mx-auto mb-3">
-                    <span className="text-xl">🧠</span>
-                  </div>
+            <div className="bg-background rounded-2xl p-8 md:p-12 border border-border/50 shadow-soft">
+              <div className="text-center mb-10">
+                <h2 className="font-heading text-2xl md:text-3xl font-semibold text-foreground mb-4">
+                  Abordare Integrativă
+                </h2>
+                <p className="text-muted-foreground text-lg leading-relaxed">
+                  Abordarea integrativă înseamnă că îmbin tehnici validate științific din mai multe orientări 
+                  psihoterapeutice, adaptate nevoilor fiecărei persoane.
+                </p>
+              </div>
+              
+              <div className="grid md:grid-cols-4 gap-6">
+                <div className="text-center p-4 rounded-xl bg-secondary/50">
+                  <div className="text-3xl mb-2">🧠</div>
                   <h4 className="font-medium text-foreground mb-1">Cognitiv-Comportamental</h4>
-                  <p className="text-sm text-muted-foreground">Schimbarea gândurilor și comportamentelor</p>
+                  <p className="text-xs text-muted-foreground">Schimbarea gândurilor și comportamentelor disfuncționale</p>
                 </div>
-                <div className="text-center">
-                  <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center mx-auto mb-3">
-                    <span className="text-xl">💭</span>
-                  </div>
+                <div className="text-center p-4 rounded-xl bg-secondary/50">
+                  <div className="text-3xl mb-2">💭</div>
                   <h4 className="font-medium text-foreground mb-1">Psihodinamic</h4>
-                  <p className="text-sm text-muted-foreground">Înțelegerea tiparelor inconștiente</p>
+                  <p className="text-xs text-muted-foreground">Înțelegerea tiparelor inconștiente din trecut</p>
                 </div>
-                <div className="text-center">
-                  <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center mx-auto mb-3">
-                    <span className="text-xl">🌱</span>
-                  </div>
+                <div className="text-center p-4 rounded-xl bg-secondary/50">
+                  <div className="text-3xl mb-2">❤️</div>
+                  <h4 className="font-medium text-foreground mb-1">Umanist</h4>
+                  <p className="text-xs text-muted-foreground">Accent pe potențialul și resursele personale</p>
+                </div>
+                <div className="text-center p-4 rounded-xl bg-secondary/50">
+                  <div className="text-3xl mb-2">🌱</div>
                   <h4 className="font-medium text-foreground mb-1">Mindfulness</h4>
-                  <p className="text-sm text-muted-foreground">Prezență și reglare emoțională</p>
+                  <p className="text-xs text-muted-foreground">Prezență conștientă și reglare emoțională</p>
                 </div>
               </div>
             </div>
@@ -188,25 +330,76 @@ const Servicii = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 lg:py-28 bg-primary text-primary-foreground">
+      {/* What to Expect */}
+      <section className="py-20 lg:py-28 bg-secondary">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="font-heading text-3xl md:text-4xl font-semibold mb-6">
-              Ești pregătit să faci primul pas?
-            </h2>
-            <p className="text-primary-foreground/80 text-lg mb-8">
-              Programează o ședință de cunoaștere pentru a discuta despre cum te pot ajuta.
-            </p>
-            <Button asChild size="lg" variant="secondary">
-              <Link to="/contact">
-                Programează acum
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Link>
-            </Button>
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-14">
+              <h2 className="font-heading text-3xl md:text-4xl font-semibold text-foreground mb-4">
+                La ce să te aștepți
+              </h2>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="bg-background rounded-xl p-6 shadow-soft">
+                <h3 className="font-heading text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
+                  <Clock className="w-5 h-5 text-accent" />
+                  Prima ședință
+                </h3>
+                <ul className="space-y-3 text-muted-foreground">
+                  <li className="flex items-start gap-2">
+                    <Check className="w-4 h-4 text-accent mt-1 flex-shrink-0" />
+                    <span>Cunoaștere reciprocă într-un cadru relaxat</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="w-4 h-4 text-accent mt-1 flex-shrink-0" />
+                    <span>Discuție despre motivele pentru care cauți sprijin</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="w-4 h-4 text-accent mt-1 flex-shrink-0" />
+                    <span>Clarificarea așteptărilor și obiectivelor</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="w-4 h-4 text-accent mt-1 flex-shrink-0" />
+                    <span>Răspunsuri la întrebările tale</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="bg-background rounded-xl p-6 shadow-soft">
+                <h3 className="font-heading text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
+                  <Heart className="w-5 h-5 text-accent" />
+                  Pe parcursul terapiei
+                </h3>
+                <ul className="space-y-3 text-muted-foreground">
+                  <li className="flex items-start gap-2">
+                    <Check className="w-4 h-4 text-accent mt-1 flex-shrink-0" />
+                    <span>Spațiu sigur pentru a te exprima liber</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="w-4 h-4 text-accent mt-1 flex-shrink-0" />
+                    <span>Tehnici practice pentru viața de zi cu zi</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="w-4 h-4 text-accent mt-1 flex-shrink-0" />
+                    <span>Progres la ritmul tău, fără presiune</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="w-4 h-4 text-accent mt-1 flex-shrink-0" />
+                    <span>Feedback și ajustări continue</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </section>
+
+      {/* FAQ Section */}
+      <FAQSection />
+
+      {/* CTA Section */}
+      <CTASection />
     </Layout>
   );
 };

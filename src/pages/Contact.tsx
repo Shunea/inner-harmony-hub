@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Phone, Mail, MapPin, Clock, Send, Video, Building } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Send, Video, Building, MessageCircle, Calendar, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -34,6 +34,29 @@ const contactInfo = [
   },
 ];
 
+const whyChoose = [
+  {
+    icon: CheckCircle,
+    title: "Răspuns rapid",
+    description: "Vei primi un răspuns în maximum 24 de ore",
+  },
+  {
+    icon: Calendar,
+    title: "Programare flexibilă",
+    description: "Ore disponibile dimineața, după-amiaza și seara",
+  },
+  {
+    icon: Video,
+    title: "Online sau cabinet",
+    description: "Alege formatul care ți se potrivește",
+  },
+  {
+    icon: MessageCircle,
+    title: "Prima consultație",
+    description: "60 minute pentru cunoaștere și clarificare",
+  },
+];
+
 const Contact = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -42,6 +65,7 @@ const Contact = () => {
     email: "",
     phone: "",
     sessionType: "online",
+    subject: "",
     message: "",
   });
 
@@ -69,6 +93,7 @@ const Contact = () => {
       email: "",
       phone: "",
       sessionType: "online",
+      subject: "",
       message: "",
     });
     setIsSubmitting(false);
@@ -94,15 +119,39 @@ const Contact = () => {
         </div>
       </section>
 
+      {/* Why Choose Section */}
+      <section className="py-12 bg-secondary">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+            {whyChoose.map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <div key={index} className="text-center">
+                  <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mx-auto mb-3">
+                    <Icon className="w-6 h-6 text-accent" />
+                  </div>
+                  <h3 className="font-medium text-foreground text-sm mb-1">{item.title}</h3>
+                  <p className="text-xs text-muted-foreground">{item.description}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* Contact Form & Info */}
       <section className="py-20 lg:py-28 bg-background">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 max-w-6xl mx-auto">
             {/* Contact Form */}
             <div>
-              <h2 className="font-heading text-2xl font-semibold text-foreground mb-6">
+              <h2 className="font-heading text-2xl font-semibold text-foreground mb-2">
                 Trimite un mesaj
               </h2>
+              <p className="text-muted-foreground mb-6">
+                Completează formularul de mai jos și te voi contacta în cel mai scurt timp.
+              </p>
+              
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="space-y-2">
                   <Label htmlFor="name">Numele complet *</Label>
@@ -111,7 +160,7 @@ const Contact = () => {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    placeholder="Introduceți numele"
+                    placeholder="Introduceți numele complet"
                     required
                   />
                 </div>
@@ -137,13 +186,13 @@ const Contact = () => {
                       type="tel"
                       value={formData.phone}
                       onChange={handleChange}
-                      placeholder="+373..."
+                      placeholder="+373 ..."
                     />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="sessionType">Tipul ședinței preferat</Label>
+                  <Label>Tipul ședinței preferat</Label>
                   <div className="grid grid-cols-2 gap-4">
                     <label
                       className={`flex items-center gap-3 p-4 rounded-lg border-2 cursor-pointer transition-all ${
@@ -161,7 +210,10 @@ const Contact = () => {
                         className="sr-only"
                       />
                       <Video className="w-5 h-5 text-primary" />
-                      <span className="font-medium">Online</span>
+                      <div>
+                        <span className="font-medium text-foreground block">Online</span>
+                        <span className="text-xs text-muted-foreground">Videoconferință</span>
+                      </div>
                     </label>
                     <label
                       className={`flex items-center gap-3 p-4 rounded-lg border-2 cursor-pointer transition-all ${
@@ -179,9 +231,23 @@ const Contact = () => {
                         className="sr-only"
                       />
                       <Building className="w-5 h-5 text-primary" />
-                      <span className="font-medium">Cabinet</span>
+                      <div>
+                        <span className="font-medium text-foreground block">Cabinet</span>
+                        <span className="text-xs text-muted-foreground">Chișinău</span>
+                      </div>
                     </label>
                   </div>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="subject">Subiect</Label>
+                  <Input
+                    id="subject"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    placeholder="ex: Programare prima ședință"
+                  />
                 </div>
 
                 <div className="space-y-2">
@@ -191,10 +257,17 @@ const Contact = () => {
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
-                    placeholder="Descrieți pe scurt motivul pentru care doriți să programați o ședință..."
+                    placeholder="Descrieți pe scurt motivul pentru care doriți să programați o ședință. Puteți menționa și disponibilitatea dvs..."
                     rows={5}
                     required
                   />
+                </div>
+
+                <div className="bg-secondary/50 rounded-lg p-4 text-sm text-muted-foreground">
+                  <p>
+                    🔒 Informațiile tale sunt confidențiale și vor fi folosite doar pentru a te contacta 
+                    în legătură cu programarea.
+                  </p>
                 </div>
 
                 <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
@@ -212,17 +285,20 @@ const Contact = () => {
 
             {/* Contact Info */}
             <div>
-              <h2 className="font-heading text-2xl font-semibold text-foreground mb-6">
+              <h2 className="font-heading text-2xl font-semibold text-foreground mb-2">
                 Informații de contact
               </h2>
+              <p className="text-muted-foreground mb-6">
+                Mă poți contacta și direct prin telefon sau email.
+              </p>
               
-              <div className="space-y-6 mb-10">
+              <div className="space-y-4 mb-10">
                 {contactInfo.map((info, index) => {
                   const Icon = info.icon;
                   return (
                     <div
                       key={index}
-                      className="flex items-start gap-4 p-5 rounded-xl bg-card border border-border/50"
+                      className="flex items-start gap-4 p-5 rounded-xl bg-card border border-border/50 shadow-soft hover:shadow-medium transition-all"
                     >
                       <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
                         <Icon className="w-5 h-5 text-accent" />
@@ -262,6 +338,20 @@ const Contact = () => {
                   </div>
                 </div>
               </div>
+
+              {/* Additional info */}
+              <div className="mt-6 p-5 rounded-xl bg-accent/10 border border-accent/20">
+                <h3 className="font-heading font-semibold text-foreground mb-2">
+                  Nu ești sigur dacă terapia este pentru tine?
+                </h3>
+                <p className="text-muted-foreground text-sm mb-3">
+                  Este normal să ai întrebări sau îndoieli. Prima ședință este o oportunitate 
+                  de cunoaștere, fără niciun angajament. Poți decide apoi dacă vrei să continui.
+                </p>
+                <p className="text-sm text-foreground font-medium">
+                  Scrie-mi și îți voi răspunde cu plăcere la orice întrebare.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -271,9 +361,11 @@ const Contact = () => {
       <section className="py-20 lg:py-28 bg-secondary">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
-            <h2 className="font-heading text-3xl font-semibold text-foreground mb-10 text-center">
-              Întrebări frecvente
-            </h2>
+            <div className="text-center mb-14">
+              <h2 className="font-heading text-3xl font-semibold text-foreground mb-4">
+                Întrebări frecvente despre programare
+              </h2>
+            </div>
             
             <div className="space-y-6">
               <div className="bg-background rounded-xl p-6 shadow-soft">
@@ -292,7 +384,7 @@ const Contact = () => {
                 </h3>
                 <p className="text-muted-foreground">
                   Ședințele online se desfășoară prin platforme securizate de videoconferință. 
-                  Ai nevoie doar de o conexiune stabilă la internet și un spațiu privat.
+                  Ai nevoie doar de o conexiune stabilă la internet și un spațiu privat unde să poți vorbi deschis.
                 </p>
               </div>
               
@@ -303,6 +395,26 @@ const Contact = () => {
                 <p className="text-muted-foreground">
                   Numărul de ședințe variază în funcție de obiectivele și nevoile fiecărei persoane. 
                   Împreună vom stabili un plan terapeutic personalizat.
+                </p>
+              </div>
+
+              <div className="bg-background rounded-xl p-6 shadow-soft">
+                <h3 className="font-heading text-lg font-semibold text-foreground mb-2">
+                  Cât timp durează până primesc un răspuns?
+                </h3>
+                <p className="text-muted-foreground">
+                  Încerc să răspund la toate mesajele în maximum 24 de ore în zilele lucrătoare. 
+                  Dacă este urgent, te rog să menționezi acest lucru în mesaj.
+                </p>
+              </div>
+
+              <div className="bg-background rounded-xl p-6 shadow-soft">
+                <h3 className="font-heading text-lg font-semibold text-foreground mb-2">
+                  Pot anula sau reprograma o ședință?
+                </h3>
+                <p className="text-muted-foreground">
+                  Da, te rog să anunți cu cel puțin 24 de ore înainte dacă nu poți ajunge la ședință. 
+                  Vom găsi împreună o altă dată convenabilă.
                 </p>
               </div>
             </div>
