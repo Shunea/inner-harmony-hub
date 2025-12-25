@@ -3,7 +3,7 @@ import { Check, ArrowRight, Video, MapPin, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/layout/Layout";
 import StatsSection from "@/components/sections/StatsSection";
-import TestimonialsSection from "@/components/sections/TestimonialsSection";
+
 import ProcessSection from "@/components/sections/ProcessSection";
 import BenefitsSection from "@/components/sections/BenefitsSection";
 import FAQSection from "@/components/sections/FAQSection";
@@ -277,8 +277,6 @@ const Index = () => {
       {/* Process Section */}
       <ProcessSection />
 
-      {/* Testimonials */}
-      <TestimonialsSection />
 
       {/* Benefits Section */}
       <BenefitsSection />
