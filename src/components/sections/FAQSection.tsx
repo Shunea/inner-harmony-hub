@@ -64,23 +64,24 @@ const FAQSection = () => {
           </p>
         </div>
 
-        <div className="max-w-3xl mx-auto">
-          <Accordion type="single" collapsible className="space-y-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             {faqs.map((faq, index) => (
-              <AccordionItem
-                key={index}
-                value={`item-${index}`}
-                className="bg-card rounded-xl border border-border/50 px-6 shadow-soft"
-              >
-                <AccordionTrigger className="text-left font-heading font-semibold text-foreground hover:no-underline py-5">
-                  {faq.question}
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground pb-5 leading-relaxed">
-                  {faq.answer}
-                </AccordionContent>
-              </AccordionItem>
+              <Accordion key={index} type="single" collapsible>
+                <AccordionItem
+                  value={`item-${index}`}
+                  className="bg-card rounded-xl border border-border/50 px-6 shadow-soft"
+                >
+                  <AccordionTrigger className="text-left font-heading font-semibold text-foreground hover:no-underline py-5">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground pb-5 leading-relaxed">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
             ))}
-          </Accordion>
+          </div>
         </div>
       </div>
     </section>

@@ -2,8 +2,10 @@ import { Link } from "react-router-dom";
 import { ArrowRight, GraduationCap, Award, Heart, BookOpen, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/layout/Layout";
+import SEO from "@/components/SEO";
 import ValuesSection from "@/components/sections/ValuesSection";
 import CTASection from "@/components/sections/CTASection";
+import { getPersonSchema, getBreadcrumbSchema } from "@/utils/structuredData";
 import nataliaSeated from "@/assets/natalia-seated.jpg";
 import nataliaPortrait from "@/assets/natalia-portrait.jpg";
 
@@ -78,10 +80,27 @@ const timeline = [
 ];
 
 const Despre = () => {
+  const breadcrumbSchema = getBreadcrumbSchema([
+    { name: "Acasă", url: "/" },
+    { name: "Despre Natalia Șargu", url: "/despre-natalia-sargu" }
+  ]);
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [getPersonSchema(), breadcrumbSchema]
+  };
+
   return (
     <Layout>
+      <SEO
+        title="Despre Natalia Șargu | Psiholog și Psihoterapeut Integrativ Chișinău"
+        description="Psiholog clinician cu dublă specializare și psihoterapeut integrativ în supervizare. Parcurs profesional, formare continuă și abordare terapeutică integrativă în Chișinău."
+        keywords="Natalia Șargu, psiholog Chișinău, psihoterapeut integrativ, master psihologie clinică, terapie integrativă Moldova"
+        canonical="/despre-natalia-sargu"
+        structuredData={structuredData}
+      />
       {/* Hero Section */}
-      <section className="py-20 lg:py-28 gradient-hero">
+      <section className="pt-32 pb-16 lg:pt-36 lg:pb-20 gradient-hero">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Image */}
@@ -233,12 +252,12 @@ const Despre = () => {
       <section className="py-20 lg:py-28 bg-secondary">
         <div className="container mx-auto px-4">
           <div className="text-center mb-14">
-            <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-6">
-              <Award className="w-7 h-7 text-primary" />
+            <div className="flex items-center justify-center gap-4 mb-6">
+              <Award className="w-8 h-8 text-white" />
+              <h2 className="font-heading text-3xl md:text-4xl font-semibold text-foreground">
+                Domenii de expertiză
+              </h2>
             </div>
-            <h2 className="font-heading text-3xl md:text-4xl font-semibold text-foreground mb-4">
-              Domenii de expertiză
-            </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
               Îmi dedic activitatea profesională pentru a oferi sprijin în diverse provocări emoționale și de viață.
             </p>

@@ -6,6 +6,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import Layout from "@/components/layout/Layout";
+import SEO from "@/components/SEO";
+import { getBreadcrumbSchema } from "@/utils/structuredData";
 
 const contactInfo = [
   {
@@ -17,8 +19,8 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Telefon",
-    value: "+373 60 000 000",
-    href: "tel:+37360000000",
+    value: "+373 69 234 250",
+    href: "tel:+37369234250",
   },
   {
     icon: Mail,
@@ -99,8 +101,20 @@ const Contact = () => {
     setIsSubmitting(false);
   };
 
+  const breadcrumbSchema = getBreadcrumbSchema([
+    { name: "Acasă", url: "/" },
+    { name: "Contact", url: "/contact" }
+  ]);
+
   return (
     <Layout>
+      <SEO
+        title="Contact Psiholog Chișinău | Programează Ședință | Natalia Șargu"
+        description="Contactează cabinetul de psihoterapie Natalia Șargu în Chișinău. Programează o ședință de terapie online sau la cabinet. Răspundem în 24h. ☎️ +373 69 234 250"
+        keywords="contact psiholog Chișinău, programare psihoterapeut, cabinet psihoterapie Chișinău, contact terapie online, psihoterapeut Moldova contact"
+        canonical="/contact"
+        structuredData={breadcrumbSchema}
+      />
       {/* Hero Section */}
       <section className="py-20 lg:py-28 gradient-hero">
         <div className="container mx-auto px-4">

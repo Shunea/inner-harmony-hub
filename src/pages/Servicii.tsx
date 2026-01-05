@@ -1,9 +1,13 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Clock, Users, Sparkles, Brain, Heart, Shield, Target, Flower2, Check, MessageCircle, Video, Building } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/layout/Layout";
+import SEO from "@/components/SEO";
 import FAQSection from "@/components/sections/FAQSection";
 import CTASection from "@/components/sections/CTASection";
+import ContactModal from "@/components/ContactModal";
+import { getServiceSchema, getBreadcrumbSchema } from "@/utils/structuredData";
 
 const services = [
   {
@@ -111,8 +115,33 @@ const processSteps = [
 ];
 
 const Servicii = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedService, setSelectedService] = useState<string>("");
+
+  const handleServiceClick = (serviceTitle: string) => {
+    setSelectedService(serviceTitle);
+    setIsModalOpen(true);
+  };
+
+  const breadcrumbSchema = getBreadcrumbSchema([
+    { name: "Acasă", url: "/" },
+    { name: "Servicii", url: "/servicii" }
+  ]);
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [getServiceSchema(), breadcrumbSchema]
+  };
+
   return (
     <Layout>
+      <SEO
+        title="Servicii Psihoterapie | Anxietate, Depresie, Traumă | Natalia Șargu"
+        description="Servicii de psihoterapie în Chișinău și online: terapie anxietate, depresie, traumă, dificultăți relaționale, dezvoltare personală. Ședințe față în față și online."
+        keywords="servicii psihoterapie, terapie anxietate Chișinău, terapie depresie Moldova, terapie traumă, consiliere psihologică, terapie online România"
+        canonical="/servicii"
+        structuredData={structuredData}
+      />
       {/* Hero Section */}
       <section className="py-20 lg:py-28 gradient-hero">
         <div className="container mx-auto px-4">
@@ -135,7 +164,7 @@ const Servicii = () => {
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg">
+              <Button asChild variant="outline" size="lg" className="text-white hover:text-white border-white/30 hover:bg-white/10">
                 <a href="#servicii">Vezi serviciile</a>
               </Button>
             </div>
@@ -216,8 +245,8 @@ const Servicii = () => {
                   key={index}
                   className="group bg-background rounded-2xl p-8 shadow-soft hover:shadow-medium border border-border/50 transition-all duration-300 hover:-translate-y-1"
                 >
-                  <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
-                    <Icon className="w-7 h-7 text-accent" />
+                  <div className="w-14 h-14 rounded-xl bg-secondary flex items-center justify-center mb-6 group-hover:bg-secondary/80 transition-colors">
+                    <Icon className="w-7 h-7 text-white" />
                   </div>
                   <h3 className="font-heading text-xl font-semibold text-foreground mb-3">
                     {service.title}
@@ -238,17 +267,33 @@ const Servicii = () => {
                     </ul>
                   </div>
                   
-                  <div className="pt-4 border-t border-border">
+                  <div className="pt-4 border-t border-border mb-4">
                     <p className="text-sm text-muted-foreground italic">
                       {service.forWhom}
                     </p>
                   </div>
+
+                  <Button
+                    onClick={() => handleServiceClick(service.title)}
+                    className="w-full"
+                    size="sm"
+                  >
+                    Programează ședință
+                    <ArrowRight className="ml-2 w-4 h-4" />
+                  </Button>
                 </article>
               );
             })}
           </div>
         </div>
       </section>
+
+      {/* Contact Modal */}
+      <ContactModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        serviceTitle={selectedService}
+      />
 
       {/* Process Section */}
       <section className="py-20 lg:py-28 bg-background">

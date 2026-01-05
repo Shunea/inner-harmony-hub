@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 
 const navLinks = [
   { href: "/", label: "Acasă" },
-  { href: "/despre", label: "Despre mine" },
+  { href: "/despre-natalia-sargu", label: "Despre mine" },
   { href: "/servicii", label: "Servicii" },
   { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },

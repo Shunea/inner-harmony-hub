@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
-import { Phone, Mail, MapPin, AlertTriangle } from "lucide-react";
+import { Phone, Mail, MapPin, AlertTriangle, Instagram, Facebook } from "lucide-react";
+import { FaTiktok } from "react-icons/fa";
+import { socialLinks } from "@/config/socialLinks";
 
 const Footer = () => {
   return (
@@ -23,14 +25,45 @@ const Footer = () => {
 
       {/* Main Footer */}
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           {/* Brand */}
           <div>
             <h3 className="font-heading text-2xl font-semibold mb-4">Natalia Șargu</h3>
-            <p className="text-primary-foreground/80 text-sm leading-relaxed">
-              Psiholog clinician și psihoterapeut integrativ în supervizare. 
+            <p className="text-primary-foreground/80 text-sm leading-relaxed mb-4">
+              Psiholog clinician și psihoterapeut integrativ în supervizare.
               Te ajut să te cunoști, să te înțelegi și să îți creezi o viață mai echilibrată emoțional.
             </p>
+
+            {/* Social Media */}
+            <div className="flex gap-3 mt-4">
+              <a
+                href={socialLinks.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-primary-foreground/10 hover:bg-primary-foreground/20 flex items-center justify-center transition-colors"
+                aria-label="Instagram"
+              >
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a
+                href={socialLinks.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-primary-foreground/10 hover:bg-primary-foreground/20 flex items-center justify-center transition-colors"
+                aria-label="Facebook"
+              >
+                <Facebook className="w-5 h-5" />
+              </a>
+              <a
+                href={socialLinks.tiktok}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-primary-foreground/10 hover:bg-primary-foreground/20 flex items-center justify-center transition-colors"
+                aria-label="TikTok"
+              >
+                <FaTiktok className="w-4 h-4" />
+              </a>
+            </div>
           </div>
 
           {/* Navigation */}
@@ -43,7 +76,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/despre" className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                <Link to="/despre-natalia-sargu" className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors">
                   Despre mine
                 </Link>
               </li>
@@ -76,8 +109,8 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3 text-sm text-primary-foreground/80">
                 <Phone className="w-4 h-4 flex-shrink-0" />
-                <a href="tel:+37360000000" className="hover:text-primary-foreground transition-colors">
-                  +373 60 000 000
+                <a href="tel:+37369234250" className="hover:text-primary-foreground transition-colors">
+                  +373 69 234 250
                 </a>
               </li>
             </ul>

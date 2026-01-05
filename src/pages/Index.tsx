@@ -1,13 +1,16 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Check, ArrowRight, Video, MapPin, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/layout/Layout";
+import SEO from "@/components/SEO";
 import StatsSection from "@/components/sections/StatsSection";
-
 import ProcessSection from "@/components/sections/ProcessSection";
 import BenefitsSection from "@/components/sections/BenefitsSection";
 import FAQSection from "@/components/sections/FAQSection";
 import CTASection from "@/components/sections/CTASection";
+import ContactModal from "@/components/ContactModal";
+import { getLocalBusinessSchema, getPersonSchema } from "@/utils/structuredData";
 import nataliaPortrait from "@/assets/natalia-portrait.jpg";
 import heroAbstract from "@/assets/hero-abstract.jpg";
 
@@ -37,10 +40,30 @@ const specializations = [
 ];
 
 const Index = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedService, setSelectedService] = useState<string>("");
+
+  const handleServiceClick = (serviceTitle: string) => {
+    setSelectedService(serviceTitle);
+    setIsModalOpen(true);
+  };
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [getLocalBusinessSchema(), getPersonSchema()]
+  };
+
   return (
     <Layout>
+      <SEO
+        title="Natalia Șargu | Psiholog Chișinău | Terapie Online și Cabinet"
+        description="Psiholog clinician și psihoterapeut integrativ în Chișinău. Oferim terapie pentru anxietate, depresie, stres, traumă și dezvoltare personală. Ședințe față în față și online pentru diasporă."
+        keywords="psiholog Chișinău, psihoterapeut Moldova, terapie anxietate, terapie depresie, terapie online, psiholog online, cabinet psihoterapie Chișinău, psihoterapeut integrativ"
+        canonical="/"
+        structuredData={structuredData}
+      />
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-start pt-32 lg:pt-40 overflow-hidden">
+      <section className="relative pt-24 lg:pt-28 pb-12 lg:pb-16 overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img
@@ -51,23 +74,45 @@ const Index = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-background via-background/95 to-background/80" />
         </div>
 
-        <div className="container mx-auto px-4 pb-20 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-            {/* Text Content */}
-            <div className="animate-fade-in-up">
-              <div className="inline-flex items-center gap-2 bg-accent/10 text-accent px-4 py-2 rounded-full text-sm font-medium mb-6">
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-6xl mx-auto">
+            {/* Title and Badge */}
+            <div className="text-center mb-8 animate-fade-in-up">
+              <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground mb-6 leading-tight">
+                Te ajut să te cunoști, să te înțelegi și să îți creezi o viață
+                <span className="text-primary"> echilibrată emoțional</span>
+              </h1>
+              <p className="text-muted-foreground text-lg md:text-xl leading-relaxed max-w-3xl mx-auto">
+                Sunt psiholog clinician cu dublă specializare și psihoterapeut integrativ în supervizare.
+                Te sprijin să înțelegi emoțiile și să găsești resursele interioare pentru schimbări reale.
+              </p>
+              <div className="inline-flex items-center gap-2 bg-accent/10 text-accent px-4 py-2 rounded-full text-sm font-medium mt-6">
                 <Sparkles className="w-4 h-4" />
                 Psiholog & Psihoterapeut Integrativ
               </div>
-              <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground mb-6 leading-tight text-balance">
-                Te ajut să te cunoști, să te înțelegi și să îți creezi o viață 
-                <span className="text-primary"> echilibrată emoțional</span>
-              </h1>
-              <p className="text-muted-foreground text-lg md:text-xl mb-8 leading-relaxed max-w-xl">
-                Sunt psiholog clinician cu dublă specializare și psihoterapeut integrativ în supervizare. 
-                Te sprijin să înțelegi emoțiile și să găsești resursele interioare pentru schimbări reale.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 mb-8">
+            </div>
+
+            {/* Image */}
+            <div className="relative animate-fade-in-delay-1 mb-8 max-w-2xl mx-auto">
+              <div className="relative rounded-2xl overflow-hidden shadow-medium">
+                <img
+                  src={nataliaPortrait}
+                  alt="Natalia Șargu - Psiholog și Psihoterapeut"
+                  className="w-full h-auto object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />
+              </div>
+
+              {/* Floating card */}
+              <div className="absolute -bottom-4 left-6 bg-background rounded-xl p-4 shadow-medium border border-border/50 hidden md:block">
+                <p className="text-sm font-medium text-foreground mb-1">7+ ani experiență</p>
+                <p className="text-xs text-muted-foreground">Psihologie clinică</p>
+              </div>
+            </div>
+
+            {/* Buttons and Info */}
+            <div className="text-center animate-fade-in-up">
+              <div className="flex flex-col sm:flex-row gap-4 mb-8 justify-center">
                 <Button asChild size="lg">
                   <Link to="/contact">
                     Programează o ședință
@@ -75,12 +120,12 @@ const Index = () => {
                   </Link>
                 </Button>
                 <Button asChild variant="outline" size="lg">
-                  <Link to="/despre">Află mai multe despre mine</Link>
+                  <Link to="/despre-natalia-sargu">Află mai multe despre mine</Link>
                 </Button>
               </div>
-              
+
               {/* Quick info */}
-              <div className="flex flex-wrap gap-6 text-sm text-muted-foreground">
+              <div className="flex flex-wrap gap-6 text-sm text-muted-foreground justify-center">
                 <div className="flex items-center gap-2">
                   <MapPin className="w-4 h-4 text-accent" />
                   <span>Chișinău & Online</span>
@@ -89,27 +134,6 @@ const Index = () => {
                   <Video className="w-4 h-4 text-accent" />
                   <span>Ședințe pentru diasporă</span>
                 </div>
-              </div>
-            </div>
-
-            {/* Image */}
-            <div className="relative animate-fade-in-delay-1">
-              <div className="relative rounded-2xl overflow-hidden shadow-medium max-h-[70vh]">
-                <img
-                  src={nataliaPortrait}
-                  alt="Natalia Șargu - Psiholog și Psihoterapeut"
-                  className="w-full h-full object-cover object-top"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />
-              </div>
-              {/* Decorative elements */}
-              <div className="absolute -z-10 -top-8 -right-8 w-72 h-72 bg-accent/10 rounded-full blur-3xl" />
-              <div className="absolute -z-10 -bottom-8 -left-8 w-56 h-56 bg-secondary rounded-full blur-2xl" />
-              
-              {/* Floating card */}
-              <div className="absolute -bottom-6 -left-6 bg-background rounded-xl p-4 shadow-medium border border-border/50 hidden md:block">
-                <p className="text-sm font-medium text-foreground mb-1">7+ ani experiență</p>
-                <p className="text-xs text-muted-foreground">Psihologie clinică</p>
               </div>
             </div>
           </div>
@@ -173,14 +197,18 @@ const Index = () => {
             {specializations.map((spec, index) => (
               <div
                 key={index}
-                className="bg-background rounded-xl p-6 shadow-soft hover:shadow-medium transition-all duration-300 group"
+                className="bg-background rounded-xl p-6 shadow-soft hover:shadow-medium transition-all duration-300 group cursor-pointer"
+                onClick={() => handleServiceClick(spec.title)}
               >
                 <h3 className="font-heading text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
                   {spec.title}
                 </h3>
-                <p className="text-muted-foreground text-sm">
+                <p className="text-muted-foreground text-sm mb-4">
                   {spec.description}
                 </p>
+                <div className="text-primary text-sm font-medium group-hover:underline">
+                  Programează →
+                </div>
               </div>
             ))}
           </div>
@@ -336,6 +364,13 @@ const Index = () => {
 
       {/* CTA Section */}
       <CTASection />
+
+      {/* Contact Modal */}
+      <ContactModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        serviceTitle={selectedService}
+      />
     </Layout>
   );
 };
