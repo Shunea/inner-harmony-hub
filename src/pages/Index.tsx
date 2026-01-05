@@ -189,7 +189,7 @@ const Index = () => {
           </div>
 
           <div className="text-center mt-10">
-            <Button asChild variant="outline">
+            <Button asChild variant="outline" className="border-white/30 text-white hover:bg-white/10 hover:text-white">
               <Link to="/servicii">
                 Vezi toate serviciile
                 <ArrowRight className="ml-2 w-4 h-4" />
