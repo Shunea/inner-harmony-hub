@@ -8,6 +8,7 @@ const navLinks = [
   { href: "/", label: "Acasă" },
   { href: "/despre", label: "Despre mine" },
   { href: "/servicii", label: "Servicii" },
+  { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },
 ];
 
