@@ -90,6 +90,19 @@ const Index = () => {
                 Sunt psiholog clinician cu dublă specializare și psihoterapeut integrativ în supervizare.
                 Te sprijin să înțelegi emoțiile și să găsești resursele interioare pentru schimbări reale.
               </p>
+
+              {/* Image - visible only on mobile */}
+              <div className="relative lg:hidden mb-8 animate-fade-in-delay-1">
+                <div className="relative rounded-2xl overflow-hidden shadow-medium h-[400px]">
+                  <img
+                    src={nataliaPortrait}
+                    alt="Natalia Șargu - Psiholog și Psihoterapeut"
+                    className="w-full h-full object-cover object-top"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />
+                </div>
+              </div>
+
               <div className="flex flex-col sm:flex-row gap-4 mb-6">
                 <Button asChild size="lg">
                   <Link to="/contact">
@@ -115,8 +128,8 @@ const Index = () => {
               </div>
             </div>
 
-            {/* Image */}
-            <div className="relative animate-fade-in-delay-1">
+            {/* Image - visible only on desktop */}
+            <div className="relative hidden lg:block animate-fade-in-delay-1">
               <div className="relative rounded-2xl overflow-hidden shadow-medium h-[450px] lg:h-[550px]">
                 <img
                   src={nataliaPortrait}
@@ -294,6 +307,16 @@ const Index = () => {
                 </li>
               </ul>
             </div>
+          </div>
+
+          {/* CTA Button */}
+          <div className="text-center mt-12">
+            <Button asChild size="lg">
+              <Link to="/contact">
+                Programează o ședință
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Link>
+            </Button>
           </div>
         </div>
       </section>

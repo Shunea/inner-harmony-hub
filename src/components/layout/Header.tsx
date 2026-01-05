@@ -21,11 +21,16 @@ const Header = () => {
       <div className="container mx-auto px-4">
         <nav className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link 
-            to="/" 
-            className="font-heading text-2xl font-semibold text-primary hover:text-primary/80 transition-colors"
+          <Link
+            to="/"
+            className="flex flex-col hover:opacity-80 transition-opacity"
           >
-            Natalia Șargu
+            <span className="font-heading text-xl md:text-2xl font-semibold text-primary">
+              Natalia Șargu
+            </span>
+            <span className="text-xs text-muted-foreground font-medium">
+              Psiholog & Psihoterapeut
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
