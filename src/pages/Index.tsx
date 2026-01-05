@@ -40,7 +40,7 @@ const Index = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+      <section className="relative min-h-screen flex items-start pt-32 lg:pt-40 overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img
@@ -51,8 +51,8 @@ const Index = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-background via-background/95 to-background/80" />
         </div>
 
-        <div className="container mx-auto px-4 py-20 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="container mx-auto px-4 pb-20 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             {/* Text Content */}
             <div className="animate-fade-in-up">
               <div className="inline-flex items-center gap-2 bg-accent/10 text-accent px-4 py-2 rounded-full text-sm font-medium mb-6">
@@ -94,11 +94,11 @@ const Index = () => {
 
             {/* Image */}
             <div className="relative animate-fade-in-delay-1">
-              <div className="relative rounded-2xl overflow-hidden shadow-medium">
+              <div className="relative rounded-2xl overflow-hidden shadow-medium max-h-[70vh]">
                 <img
                   src={nataliaPortrait}
                   alt="Natalia Șargu - Psiholog și Psihoterapeut"
-                  className="w-full h-auto object-cover"
+                  className="w-full h-full object-cover object-top"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />
               </div>
@@ -138,12 +138,9 @@ const Index = () => {
             {challenges.map((challenge, index) => (
               <div
                 key={index}
-                className="flex items-start gap-4 p-6 rounded-xl bg-card border border-border/50 shadow-soft hover:shadow-medium hover:-translate-y-1 transition-all duration-300"
+                className="p-6 rounded-xl bg-card border border-border/50 shadow-soft hover:shadow-medium hover:-translate-y-1 transition-all duration-300"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
-                  <Check className="w-4 h-4 text-accent" />
-                </div>
                 <p className="text-foreground font-medium">{challenge}</p>
               </div>
             ))}
@@ -245,8 +242,8 @@ const Index = () => {
 
             {/* Online */}
             <div className="bg-card rounded-2xl p-8 shadow-soft border border-border/50 hover:shadow-medium transition-all duration-300">
-              <div className="w-14 h-14 rounded-xl bg-accent/20 flex items-center justify-center mb-6">
-                <Video className="w-7 h-7 text-accent" />
+              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+                <Video className="w-7 h-7 text-primary" />
               </div>
               <h3 className="font-heading text-xl font-semibold text-foreground mb-3">
                 Terapie Online
