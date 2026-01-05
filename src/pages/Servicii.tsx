@@ -146,7 +146,7 @@ const Servicii = () => {
       <section className="py-20 lg:py-28 gradient-hero">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center animate-fade-in-up">
-            <p className="text-accent font-medium mb-4 tracking-wide uppercase text-sm">
+            <p className="text-primary font-medium mb-4 tracking-wide uppercase text-sm">
               Servicii de psihoterapie
             </p>
             <h1 className="font-heading text-4xl md:text-5xl font-semibold text-foreground mb-6 leading-tight">
@@ -176,7 +176,7 @@ const Servicii = () => {
       <section className="py-20 lg:py-28 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-14">
-            <p className="text-accent font-medium mb-3 tracking-wide uppercase text-sm">
+            <p className="text-primary font-medium mb-3 tracking-wide uppercase text-sm">
               Tipuri de ședințe
             </p>
             <h2 className="font-heading text-3xl md:text-4xl font-semibold text-foreground mb-4">
@@ -190,26 +190,27 @@ const Servicii = () => {
               return (
                 <div
                   key={index}
-                  className="bg-card rounded-2xl p-8 shadow-soft border border-border/50 hover:shadow-medium hover:-translate-y-1 transition-all duration-300"
+                  onClick={() => handleServiceClick(type.title)}
+                  className="bg-card rounded-2xl p-6 shadow-soft border border-border/50 hover:shadow-medium hover:-translate-y-1 transition-all duration-300 cursor-pointer"
                 >
-                  <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-6">
-                    <Icon className="w-7 h-7 text-accent" />
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                    <Icon className="w-6 h-6 text-primary" />
                   </div>
-                  <h3 className="font-heading text-xl font-semibold text-foreground mb-2">
+                  <h3 className="font-heading text-lg font-semibold text-foreground mb-2">
                     {type.title}
                   </h3>
-                  <div className="flex gap-4 text-sm text-muted-foreground mb-4">
+                  <div className="flex gap-3 text-sm text-muted-foreground mb-3">
                     <span>{type.location}</span>
                     <span>•</span>
                     <span>{type.duration}</span>
                   </div>
-                  <p className="text-muted-foreground mb-6 leading-relaxed">
+                  <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
                     {type.description}
                   </p>
-                  <ul className="space-y-2">
+                  <ul className="space-y-1.5">
                     {type.benefits.map((benefit, idx) => (
                       <li key={idx} className="flex items-center gap-2 text-sm text-foreground">
-                        <Check className="w-4 h-4 text-accent" />
+                        <Check className="w-4 h-4 text-primary flex-shrink-0" />
                         <span>{benefit}</span>
                       </li>
                     ))}
@@ -225,7 +226,7 @@ const Servicii = () => {
       <section id="servicii" className="py-20 lg:py-28 bg-secondary scroll-mt-24">
         <div className="container mx-auto px-4">
           <div className="text-center mb-14">
-            <p className="text-accent font-medium mb-3 tracking-wide uppercase text-sm">
+            <p className="text-primary font-medium mb-3 tracking-wide uppercase text-sm">
               Specializări
             </p>
             <h2 className="font-heading text-3xl md:text-4xl font-semibold text-foreground mb-4">

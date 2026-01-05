@@ -53,7 +53,7 @@ const FAQSection = () => {
     <section className="py-20 lg:py-28 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-14">
-          <p className="text-accent font-medium mb-3 tracking-wide uppercase text-sm">
+          <p className="text-primary font-medium mb-3 tracking-wide uppercase text-sm">
             FAQ
           </p>
           <h2 className="font-heading text-3xl md:text-4xl font-semibold text-foreground mb-4">

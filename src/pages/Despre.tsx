@@ -148,7 +148,7 @@ const Despre = () => {
           <div className="max-w-4xl mx-auto">
             <div className="grid md:grid-cols-5 gap-10 items-center">
               <div className="md:col-span-3">
-                <p className="text-accent font-medium mb-3 tracking-wide uppercase text-sm">
+                <p className="text-primary font-medium mb-3 tracking-wide uppercase text-sm">
                   Povestea mea
                 </p>
                 <h2 className="font-heading text-3xl font-semibold text-foreground mb-6">
@@ -307,12 +307,12 @@ const Despre = () => {
                     }`}
                   >
                     {/* Dot */}
-                    <div className="absolute left-4 md:left-1/2 w-3 h-3 bg-accent rounded-full md:-translate-x-1.5 z-10" />
+                    <div className="absolute left-4 md:left-1/2 w-3 h-3 bg-primary rounded-full md:-translate-x-1.5 z-10" />
                     
                     {/* Content */}
                     <div className={`flex-1 ml-12 md:ml-0 ${index % 2 === 0 ? "md:pr-12 md:text-right" : "md:pl-12"}`}>
                       <div className="bg-card rounded-xl p-5 shadow-soft border border-border/50 inline-block">
-                        <span className="text-accent font-bold text-lg">{item.year}</span>
+                        <span className="text-primary font-bold text-lg">{item.year}</span>
                         <h3 className="font-heading font-semibold text-foreground mt-1">{item.title}</h3>
                         <p className="text-muted-foreground text-sm mt-1">{item.description}</p>
                       </div>

@@ -62,8 +62,8 @@ const Index = () => {
         canonical="/"
         structuredData={structuredData}
       />
-      {/* Hero Section */}
-      <section className="relative pt-24 lg:pt-28 pb-12 lg:pb-16 overflow-hidden">
+      {/* Hero Section - Side by Side Layout */}
+      <section className="relative py-16 lg:py-20 overflow-hidden bg-background">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img
@@ -75,44 +75,22 @@ const Index = () => {
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-6xl mx-auto">
-            {/* Title and Badge */}
-            <div className="text-center mb-8 animate-fade-in-up">
-              <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground mb-6 leading-tight">
-                Te ajut să te cunoști, să te înțelegi și să îți creezi o viață
-                <span className="text-primary"> echilibrată emoțional</span>
-              </h1>
-              <p className="text-muted-foreground text-lg md:text-xl leading-relaxed max-w-3xl mx-auto">
-                Sunt psiholog clinician cu dublă specializare și psihoterapeut integrativ în supervizare.
-                Te sprijin să înțelegi emoțiile și să găsești resursele interioare pentru schimbări reale.
-              </p>
-              <div className="inline-flex items-center gap-2 bg-accent/10 text-accent px-4 py-2 rounded-full text-sm font-medium mt-6">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Text Content */}
+            <div className="animate-fade-in-up">
+              <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
                 <Sparkles className="w-4 h-4" />
                 Psiholog & Psihoterapeut Integrativ
               </div>
-            </div>
-
-            {/* Image */}
-            <div className="relative animate-fade-in-delay-1 mb-8 max-w-2xl mx-auto">
-              <div className="relative rounded-2xl overflow-hidden shadow-medium">
-                <img
-                  src={nataliaPortrait}
-                  alt="Natalia Șargu - Psiholog și Psihoterapeut"
-                  className="w-full h-auto object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />
-              </div>
-
-              {/* Floating card */}
-              <div className="absolute -bottom-4 left-6 bg-background rounded-xl p-4 shadow-medium border border-border/50 hidden md:block">
-                <p className="text-sm font-medium text-foreground mb-1">7+ ani experiență</p>
-                <p className="text-xs text-muted-foreground">Psihologie clinică</p>
-              </div>
-            </div>
-
-            {/* Buttons and Info */}
-            <div className="text-center animate-fade-in-up">
-              <div className="flex flex-col sm:flex-row gap-4 mb-8 justify-center">
+              <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-900 mb-5 leading-tight text-balance">
+                Te ajut să te cunoști, să te înțelegi și să îți creezi o viață
+                <span className="text-primary"> echilibrată emoțional</span>
+              </h1>
+              <p className="text-gray-700 text-base md:text-lg mb-6 leading-relaxed max-w-xl">
+                Sunt psiholog clinician cu dublă specializare și psihoterapeut integrativ în supervizare.
+                Te sprijin să înțelegi emoțiile și să găsești resursele interioare pentru schimbări reale.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 mb-6">
                 <Button asChild size="lg">
                   <Link to="/contact">
                     Programează o ședință
@@ -125,7 +103,7 @@ const Index = () => {
               </div>
 
               {/* Quick info */}
-              <div className="flex flex-wrap gap-6 text-sm text-muted-foreground justify-center">
+              <div className="flex flex-wrap gap-6 text-sm text-muted-foreground">
                 <div className="flex items-center gap-2">
                   <MapPin className="w-4 h-4 text-accent" />
                   <span>Chișinău & Online</span>
@@ -134,6 +112,27 @@ const Index = () => {
                   <Video className="w-4 h-4 text-accent" />
                   <span>Ședințe pentru diasporă</span>
                 </div>
+              </div>
+            </div>
+
+            {/* Image */}
+            <div className="relative animate-fade-in-delay-1">
+              <div className="relative rounded-2xl overflow-hidden shadow-medium h-[450px] lg:h-[550px]">
+                <img
+                  src={nataliaPortrait}
+                  alt="Natalia Șargu - Psiholog și Psihoterapeut"
+                  className="w-full h-full object-cover object-top"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />
+              </div>
+              {/* Decorative elements */}
+              <div className="absolute -z-10 -top-8 -right-8 w-72 h-72 bg-accent/10 rounded-full blur-3xl" />
+              <div className="absolute -z-10 -bottom-8 -left-8 w-56 h-56 bg-secondary rounded-full blur-2xl" />
+
+              {/* Floating card */}
+              <div className="absolute -bottom-4 left-4 bg-background rounded-xl p-4 shadow-medium border border-border/50 hidden md:block">
+                <p className="text-sm font-medium text-foreground mb-1">7+ ani experiență</p>
+                <p className="text-xs text-muted-foreground">Psihologie clinică</p>
               </div>
             </div>
           </div>
@@ -147,7 +146,7 @@ const Index = () => {
       <section className="py-20 lg:py-28 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-14">
-            <p className="text-accent font-medium mb-3 tracking-wide uppercase text-sm">
+            <p className="text-primary font-medium mb-3 tracking-wide uppercase text-sm">
               Sprijin profesional
             </p>
             <h2 className="font-heading text-3xl md:text-4xl font-semibold text-foreground mb-4">
@@ -185,7 +184,7 @@ const Index = () => {
       <section className="py-20 lg:py-28 bg-secondary">
         <div className="container mx-auto px-4">
           <div className="text-center mb-14">
-            <p className="text-accent font-medium mb-3 tracking-wide uppercase text-sm">
+            <p className="text-primary font-medium mb-3 tracking-wide uppercase text-sm">
               Specializări
             </p>
             <h2 className="font-heading text-3xl md:text-4xl font-semibold text-foreground mb-4">
@@ -228,7 +227,7 @@ const Index = () => {
       <section className="py-20 lg:py-28 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-14">
-            <p className="text-accent font-medium mb-3 tracking-wide uppercase text-sm">
+            <p className="text-primary font-medium mb-3 tracking-wide uppercase text-sm">
               Flexibilitate
             </p>
             <h2 className="font-heading text-3xl md:text-4xl font-semibold text-foreground mb-4">
@@ -311,7 +310,7 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <p className="text-accent font-medium mb-3 tracking-wide uppercase text-sm">
+              <p className="text-primary font-medium mb-3 tracking-wide uppercase text-sm">
                 Pentru tine
               </p>
               <h2 className="font-heading text-3xl md:text-4xl font-semibold text-foreground mb-4">
