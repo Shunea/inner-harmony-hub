@@ -9,15 +9,24 @@ const Footer = () => {
       {/* Crisis Banner */}
       <div className="bg-destructive/90 text-destructive-foreground py-4">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row items-start md:items-center gap-3">
-            <AlertTriangle className="w-5 h-5 flex-shrink-0 mt-0.5 md:mt-0" />
-            <div className="text-sm">
-              <p className="font-semibold mb-1">În criză?</p>
-              <p className="opacity-90">
-                Eu nu ofer servicii de urgență. Dacă ai gânduri suicidare sau dorințe de a-ți face rău, 
-                te rog să apelezi <strong>112</strong> sau: Telefonul copilului - <strong>116 111</strong> (24h) | 
-                Telefon de încredere pentru femei/fete - <strong>080088008</strong>
-              </p>
+          <div className="flex flex-col gap-3">
+            <div className="flex items-start gap-3">
+              <AlertTriangle className="w-5 h-5 flex-shrink-0 mt-0.5" />
+              <div className="text-sm">
+                <p className="font-semibold mb-2">În criză?</p>
+                <p className="opacity-90 leading-relaxed">
+                  Te rog să reții că eu nu ofer servicii de asistență în caz de urgență. Dacă te afli în prezent în criză, 
+                  ai gânduri suicidare sau dorințe de a-ți face rău în vreun fel, te rog să apelezi la <strong>112</strong> sau 
+                  la alte servicii de suport pentru cazurile de urgență.
+                </p>
+                <p className="opacity-90 mt-2">
+                  <strong>Alte contacte care v-ar putea fi de ajutor:</strong>
+                </p>
+                <ul className="opacity-90 mt-1 space-y-1">
+                  <li>• Telefonul copilului - <strong>116 111</strong> (liniile sunt deschise 24 de ore pe zi)</li>
+                  <li>• Telefon de încredere pentru femei/fete - <strong>080088008</strong></li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -83,6 +92,11 @@ const Footer = () => {
               <li>
                 <Link to="/servicii" className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors">
                   Servicii
+                </Link>
+              </li>
+              <li>
+                <Link to="/faq" className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                  Întrebări frecvente
                 </Link>
               </li>
               <li>
