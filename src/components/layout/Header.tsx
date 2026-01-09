@@ -9,6 +9,7 @@ const navLinks = [
   { href: "/despre-natalia-sargu", label: "Despre mine" },
   { href: "/servicii", label: "Servicii" },
   { href: "/blog", label: "Blog" },
+  { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
 ];
 

@@ -1,13 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Check, ArrowRight, Video, MapPin, Sparkles } from "lucide-react";
+import { Check, ArrowRight, Video, MapPin, Sparkles, Clock, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
-import StatsSection from "@/components/sections/StatsSection";
 import ProcessSection from "@/components/sections/ProcessSection";
-import BenefitsSection from "@/components/sections/BenefitsSection";
-import FAQSection from "@/components/sections/FAQSection";
 import CTASection from "@/components/sections/CTASection";
 import ContactModal from "@/components/ContactModal";
 import { getLocalBusinessSchema, getPersonSchema } from "@/utils/structuredData";
@@ -28,15 +25,6 @@ const reasons = [
   "emoțiile te copleșesc sau nu le înțelegi complet",
   "vrei să înveți cum să te respecți, să-ți pui limite și să-ți creezi relații sănătoase",
   "vrei sprijin profesionist în limba română, indiferent unde te afli",
-];
-
-const specializations = [
-  { title: "Anxietate și panică", description: "Tehnici validate pentru gestionarea anxietății" },
-  { title: "Stres și burnout", description: "Strategii de recuperare și prevenție" },
-  { title: "Traume emoționale", description: "Procesare sigură și integrare" },
-  { title: "Relații dificile", description: "Comunicare și limite sănătoase" },
-  { title: "Stimă de sine", description: "Reconstrucția încrederii în sine" },
-  { title: "Dezvoltare personală", description: "Claritate și aliniere interioară" },
 ];
 
 const Index = () => {
@@ -83,12 +71,11 @@ const Index = () => {
                 Psiholog & Psihoterapeut Integrativ
               </div>
               <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-900 mb-5 leading-tight text-balance">
-                Te ajut să te cunoști, să te înțelegi și să îți creezi o viață
-                <span className="text-primary"> echilibrată emoțional</span>
+                Schimbarea începe atunci când ești
+                <span className="text-primary"> înțeles(ă)</span>
               </h1>
               <p className="text-gray-700 text-base md:text-lg mb-6 leading-relaxed max-w-xl">
-                Sunt psiholog clinician cu dublă specializare și psihoterapeut integrativ în supervizare.
-                Te sprijin să înțelegi emoțiile și să găsești resursele interioare pentru schimbări reale.
+                Sunt psiholog clinician și psihoterapeut integrativ în supervizare. Creez un spațiu sigur în care poți explora emoțiile, tiparele și resursele tale interioare, pentru schimbări reale și durabile.
               </p>
 
               {/* Image - visible only on mobile */}
@@ -141,97 +128,52 @@ const Index = () => {
               {/* Decorative elements */}
               <div className="absolute -z-10 -top-8 -right-8 w-72 h-72 bg-accent/10 rounded-full blur-3xl" />
               <div className="absolute -z-10 -bottom-8 -left-8 w-56 h-56 bg-secondary rounded-full blur-2xl" />
-
-              {/* Floating card */}
-              <div className="absolute -bottom-4 left-4 bg-background rounded-xl p-4 shadow-medium border border-border/50 hidden md:block">
-                <p className="text-sm font-medium text-foreground mb-1">7+ ani experiență</p>
-                <p className="text-xs text-muted-foreground">Psihologie clinică</p>
-              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Stats Section */}
-      <StatsSection />
-
-      {/* Challenges Section */}
-      <section className="py-20 lg:py-28 bg-background">
+      {/* Challenges Section - Domenii în care te pot ajuta */}
+      <section className="py-20 lg:py-28 bg-secondary">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-14">
             <p className="text-primary font-medium mb-3 tracking-wide uppercase text-sm">
               Sprijin profesional
             </p>
             <h2 className="font-heading text-3xl md:text-4xl font-semibold text-foreground mb-4">
-              Lucrez cu adulți și adolescenți care se confruntă cu:
+              Domenii în care te pot ajuta
             </h2>
             <p className="text-muted-foreground text-lg">
-              Înțeleg cât de dificil poate fi să treci prin aceste experiențe. Sunt aici să te ajut.
+              Sunt psiholog clinician cu dublă specializare și psihoterapeut integrativ în supervizare. 
+              Te sprijin să înțelegi emoțiile, să-ți regăsești resursele interioare și să creezi schimbări reale în viața ta.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {challenges.map((challenge, index) => (
-              <div
-                key={index}
-                className="p-6 rounded-xl bg-card border border-border/50 shadow-soft hover:shadow-medium hover:-translate-y-1 transition-all duration-300"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <p className="text-foreground font-medium">{challenge}</p>
-              </div>
-            ))}
+          <div className="max-w-3xl mx-auto mb-10">
+            <p className="text-center text-foreground text-lg font-medium mb-8">
+              Lucrez cu adulți și adolescenți care se confruntă cu:
+            </p>
+            <div className="grid md:grid-cols-2 gap-4">
+              {challenges.map((challenge, index) => (
+                <div
+                  key={index}
+                  className="flex items-center gap-3 p-4 rounded-xl bg-background border border-border/50 shadow-soft"
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
+                  <Check className="w-5 h-5 text-primary flex-shrink-0" />
+                  <p className="text-foreground">{challenge}</p>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div className="text-center mt-12">
+          <div className="text-center">
             <div className="inline-block bg-accent/10 rounded-xl p-6 max-w-2xl">
               <p className="text-lg text-foreground font-heading">
                 ✔️ Obiectivul meu este să te ajut să te înțelegi mai bine, să îți asculți nevoile reale 
                 și să găsești un echilibru emoțional durabil.
               </p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Specializations Grid */}
-      <section className="py-20 lg:py-28 bg-secondary">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-14">
-            <p className="text-primary font-medium mb-3 tracking-wide uppercase text-sm">
-              Specializări
-            </p>
-            <h2 className="font-heading text-3xl md:text-4xl font-semibold text-foreground mb-4">
-              Domenii în care te pot ajuta
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {specializations.map((spec, index) => (
-              <div
-                key={index}
-                className="bg-background rounded-xl p-6 shadow-soft hover:shadow-medium transition-all duration-300 group cursor-pointer"
-                onClick={() => handleServiceClick(spec.title)}
-              >
-                <h3 className="font-heading text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
-                  {spec.title}
-                </h3>
-                <p className="text-muted-foreground text-sm mb-4">
-                  {spec.description}
-                </p>
-                <div className="text-primary text-sm font-medium group-hover:underline">
-                  Programează →
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center mt-10">
-            <Button asChild variant="outline" className="border-white/30 text-white hover:bg-white/10 hover:text-white">
-              <Link to="/servicii">
-                Vezi toate serviciile
-                <ArrowRight className="ml-2 w-4 h-4" />
-              </Link>
-            </Button>
           </div>
         </div>
       </section>
@@ -247,11 +189,11 @@ const Index = () => {
               Terapie față în față și online
             </h2>
             <p className="text-muted-foreground text-lg">
-              Indiferent unde te afli, poți avea acces la sprijin profesionist.
+              Lucrez cu clienți în cabinetul din Chișinău dar și online, astfel încât să poți avea acces la sprijin profesionist indiferent unde te afli.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">
             {/* In-person */}
             <div className="bg-card rounded-2xl p-8 shadow-soft border border-border/50 hover:shadow-medium transition-all duration-300">
               <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
@@ -260,24 +202,9 @@ const Index = () => {
               <h3 className="font-heading text-xl font-semibold text-foreground mb-3">
                 Cabinet în Chișinău
               </h3>
-              <p className="text-muted-foreground leading-relaxed mb-4">
-                Lucrez cu clienți în cabinetul din Chișinău, într-un spațiu sigur și confortabil, 
-                special amenajat pentru ședințele de psihoterapie.
+              <p className="text-muted-foreground leading-relaxed">
+                Un spațiu calm și confidențial, special gândit pentru ședințe de psihoterapie și lucru emoțional în siguranță.
               </p>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-accent" />
-                  <span>Spațiu privat și confortabil</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-accent" />
-                  <span>Atmosferă relaxantă</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-accent" />
-                  <span>Acces facil în centrul orașului</span>
-                </li>
-              </ul>
             </div>
 
             {/* Online */}
@@ -288,24 +215,26 @@ const Index = () => {
               <h3 className="font-heading text-xl font-semibold text-foreground mb-3">
                 Terapie Online
               </h3>
-              <p className="text-muted-foreground leading-relaxed mb-4">
-                O soluție eficientă, sigură și confidențială pentru persoanele din diasporă sau 
-                pentru cei care nu pot ajunge fizic la cabinet.
+              <p className="text-muted-foreground leading-relaxed">
+                O soluție eficientă și sigură pentru persoanele din diasporă sau pentru cei care nu pot ajunge fizic la cabinet.
               </p>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-accent" />
-                  <span>Platforme securizate</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-accent" />
-                  <span>Flexibilitate în programare</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-accent" />
-                  <span>Perfect pentru diasporă</span>
-                </li>
-              </ul>
+            </div>
+          </div>
+
+          {/* Session Info */}
+          <div className="max-w-2xl mx-auto">
+            <div className="bg-accent/5 rounded-2xl p-8 border border-accent/20">
+              <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                <div className="flex items-center gap-3">
+                  <Clock className="w-5 h-5 text-primary" />
+                  <span className="text-foreground font-medium">Durata ședinței: 50 minute</span>
+                </div>
+                <div className="hidden sm:block w-px h-6 bg-border" />
+                <div className="flex items-center gap-3">
+                  <Calendar className="w-5 h-5 text-primary" />
+                  <span className="text-foreground font-medium">Program: Luni-Vineri 9:00 - 16:30</span>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -324,12 +253,8 @@ const Index = () => {
       {/* Process Section */}
       <ProcessSection />
 
-
-      {/* Benefits Section */}
-      <BenefitsSection />
-
       {/* Right Place Section */}
-      <section className="py-20 lg:py-28 bg-background">
+      <section className="py-20 lg:py-28 bg-secondary">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
@@ -348,9 +273,9 @@ const Index = () => {
               {reasons.map((reason, index) => (
                 <div
                   key={index}
-                  className="flex items-start gap-4 p-5 rounded-xl bg-accent/5 border border-accent/20 hover:bg-accent/10 transition-colors"
+                  className="flex items-start gap-4 p-5 rounded-xl bg-background border border-border/50 hover:shadow-soft transition-all"
                 >
-                  <div className="text-accent font-semibold text-lg">✔️</div>
+                  <div className="text-primary font-semibold text-lg">✔️</div>
                   <p className="text-foreground">{reason}</p>
                 </div>
               ))}
@@ -368,11 +293,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <FAQSection />
-
       {/* Quote Section */}
-      <section className="py-16 lg:py-20 bg-secondary">
+      <section className="py-16 lg:py-20 bg-background">
         <div className="container mx-auto px-4">
           <blockquote className="max-w-3xl mx-auto text-center">
             <p className="font-heading text-2xl md:text-3xl font-medium leading-relaxed text-foreground mb-4">
