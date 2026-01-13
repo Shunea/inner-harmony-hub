@@ -137,20 +137,20 @@ const Index = () => {
       <section className="py-20 lg:py-28 bg-secondary">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-14">
-            <p className="text-primary font-medium mb-3 tracking-wide uppercase text-sm">
+            <p className="text-accent/70 font-medium mb-3 tracking-wide uppercase text-sm">
               Sprijin profesional
             </p>
-            <h2 className="font-heading text-3xl md:text-4xl font-semibold text-foreground mb-4">
+            <h2 className="font-heading text-3xl md:text-4xl font-semibold text-accent mb-4">
               Domenii în care te pot ajuta
             </h2>
-            <p className="text-muted-foreground text-lg">
+            <p className="text-accent/80 text-lg">
               Sunt psiholog clinician cu dublă specializare și psihoterapeut integrativ în supervizare. 
               Te sprijin să înțelegi emoțiile, să-ți regăsești resursele interioare și să creezi schimbări reale în viața ta.
             </p>
           </div>
 
           <div className="max-w-3xl mx-auto mb-10">
-            <p className="text-center text-foreground text-lg font-medium mb-8">
+            <p className="text-center text-accent text-lg font-medium mb-8">
               Lucrez cu adulți și adolescenți care se confruntă cu:
             </p>
             <div className="grid md:grid-cols-2 gap-4">
@@ -168,10 +168,9 @@ const Index = () => {
           </div>
 
           <div className="text-center">
-            <div className="inline-block bg-accent/10 rounded-xl p-6 max-w-2xl">
+            <div className="inline-block bg-accent/60 rounded-xl p-6 max-w-2xl">
               <p className="text-lg text-foreground font-heading">
-                ✔️ Obiectivul meu este să te ajut să te înțelegi mai bine, să îți asculți nevoile reale 
-                și să găsești un echilibru emoțional durabil.
+                ✔️ Obiectivul meu este să ofer un spațiu terapeutic sigur și profesionist, în care oamenii să își poată înțelege emoțiile, regla stările interne și construi schimbări reale, în ritmul lor.
               </p>
             </div>
           </div>
@@ -182,7 +181,7 @@ const Index = () => {
       <section className="py-20 lg:py-28 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-14">
-            <p className="text-primary font-medium mb-3 tracking-wide uppercase text-sm">
+            <p className="text-secondary font-medium mb-3 tracking-wide uppercase text-sm">
               Flexibilitate
             </p>
             <h2 className="font-heading text-3xl md:text-4xl font-semibold text-foreground mb-4">
@@ -258,13 +257,13 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <p className="text-primary font-medium mb-3 tracking-wide uppercase text-sm">
+              <p className="text-accent/70 font-medium mb-3 tracking-wide uppercase text-sm">
                 Pentru tine
               </p>
-              <h2 className="font-heading text-3xl md:text-4xl font-semibold text-foreground mb-4">
+              <h2 className="font-heading text-3xl md:text-4xl font-semibold text-accent mb-4">
                 Ești în locul potrivit dacă...
               </h2>
-              <p className="text-muted-foreground text-lg">
+              <p className="text-accent text-lg">
                 ...simți că:
               </p>
             </div>

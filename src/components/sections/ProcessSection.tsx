@@ -36,7 +36,7 @@ const ProcessSection = () => {
     <section className="py-20 lg:py-28 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-14">
-          <p className="text-accent font-medium mb-3 tracking-wide uppercase text-sm">
+          <p className="text-secondary font-medium mb-3 tracking-wide uppercase text-sm">
             Cum funcționează
           </p>
           <h2 className="font-heading text-3xl md:text-4xl font-semibold text-foreground mb-4">
@@ -63,10 +63,10 @@ const ProcessSection = () => {
                   
                   <div className="relative bg-card rounded-2xl p-6 border border-border/50 shadow-soft hover:shadow-medium transition-all duration-300 h-full">
                     <div className="flex items-center gap-3 mb-4">
-                      <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center">
+                      <div className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center">
                         <Icon className="w-6 h-6 text-accent" />
                       </div>
-                      <span className="font-heading text-3xl font-bold text-accent/30">
+                      <span className="font-heading text-3xl font-bold text-primary">
                         {step.step}
                       </span>
                     </div>

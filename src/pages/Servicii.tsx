@@ -18,18 +18,18 @@ const services = [
     forWhom: "Pentru tine dacă simți neliniște constantă, atacuri de panică, griji excesive sau evitare.",
   },
   {
-    icon: Heart,
-    title: "Terapie pentru Depresie",
-    description: "Sprijin în procesul de recuperare, reconstrucția motivației și a sensului vieții.",
-    details: ["Activare comportamentală", "Procesare emoțională", "Reconstrucție cognitivă", "Prevenție recăderi"],
-    forWhom: "Pentru tine dacă simți tristețe persistentă, lipsă de energie, pierderea interesului sau gânduri negative.",
-  },
-  {
     icon: Shield,
     title: "Lucrul cu Trauma",
     description: "Procesarea experiențelor traumatice într-un ritm sigur și respectuos.",
     details: ["Stabilizare emoțională", "Procesare trauma", "Integrare resurse", "Vindecare relațională"],
     forWhom: "Pentru tine dacă ai trecut prin experiențe dureroase care încă te afectează emoțional.",
+  },
+  {
+    icon: Target,
+    title: "Dezvoltare Personală",
+    description: "Claritate interioară, autocunoaștere și realizarea potențialului personal.",
+    details: ["Definirea obiectivelor", "Creșterea încrederii", "Luarea deciziilor", "Autenticitate"],
+    forWhom: "Pentru tine dacă vrei să te cunoști mai bine, să-ți clarifici valorile și să îți atingi potențialul.",
   },
   {
     icon: Users,
@@ -39,11 +39,11 @@ const services = [
     forWhom: "Pentru tine dacă te confrunți cu conflicte repetitive, dificultăți de comunicare sau relații toxice.",
   },
   {
-    icon: Target,
-    title: "Dezvoltare Personală",
-    description: "Claritate interioară, autocunoaștere și realizarea potențialului personal.",
-    details: ["Definirea obiectivelor", "Creșterea încrederii", "Luarea deciziilor", "Autenticitate"],
-    forWhom: "Pentru tine dacă vrei să te cunoști mai bine, să-ți clarifici valorile și să îți atingi potențialul.",
+    icon: Heart,
+    title: "Terapie pentru Depresie",
+    description: "Sprijin în procesul de recuperare, reconstrucția motivației și a sensului vieții.",
+    details: ["Activare comportamentală", "Procesare emoțională", "Reconstrucție cognitivă", "Prevenție recăderi"],
+    forWhom: "Pentru tine dacă simți tristețe persistentă, lipsă de energie, pierderea interesului sau gânduri negative.",
   },
   {
     icon: Flower2,
@@ -70,14 +70,6 @@ const sessionTypes = [
     duration: "50 minute",
     description: "Sesiune video securizată, ideală pentru cei din diasporă sau care nu pot ajunge la cabinet.",
     benefits: ["Flexibilitate maximă", "Confort de acasă", "Acces din orice locație"],
-  },
-  {
-    icon: MessageCircle,
-    title: "Prima consultație",
-    location: "Cabinet sau online",
-    duration: "60 minute",
-    description: "Ședință introductivă pentru cunoaștere reciprocă, evaluare inițială și stabilirea obiectivelor.",
-    benefits: ["Cunoaștere reciprocă", "Clarificare așteptări", "Plan personalizat"],
   },
 ];
 
@@ -150,12 +142,12 @@ const Servicii = () => {
               Servicii de psihoterapie
             </p>
             <h1 className="font-heading text-4xl md:text-5xl font-semibold text-foreground mb-6 leading-tight">
-              Cum te pot ajuta
+              Cum te pot susține
             </h1>
             <p className="text-muted-foreground text-lg md:text-xl leading-relaxed mb-8">
-              Oferim sprijin personalizat pentru diverse provocări emoționale și de viață, 
-              într-un mediu sigur și non-judgmental. Fiecare persoană este unică, iar terapia 
-              se adaptează nevoilor tale.
+              Ofer un cadru terapeutic adaptat nevoilor tale, în care dificultățile emoționale și 
+              provocările de viață pot fi explorate cu grijă și claritate. Procesul este construit în jurul tău, 
+              într-un spațiu sigur, respectuos și confidențial.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Button asChild size="lg">
@@ -176,7 +168,7 @@ const Servicii = () => {
       <section className="py-20 lg:py-28 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-14">
-            <p className="text-primary font-medium mb-3 tracking-wide uppercase text-sm">
+            <p className="text-secondary font-medium mb-3 tracking-wide uppercase text-sm">
               Tipuri de ședințe
             </p>
             <h2 className="font-heading text-3xl md:text-4xl font-semibold text-foreground mb-4">
@@ -184,7 +176,7 @@ const Servicii = () => {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
             {sessionTypes.map((type, index) => {
               const Icon = type.icon;
               return (
@@ -226,13 +218,13 @@ const Servicii = () => {
       <section id="servicii" className="py-20 lg:py-28 bg-secondary scroll-mt-24">
         <div className="container mx-auto px-4">
           <div className="text-center mb-14">
-            <p className="text-primary font-medium mb-3 tracking-wide uppercase text-sm">
+            <p className="text-accent/70 font-medium mb-3 tracking-wide uppercase text-sm">
               Specializări
             </p>
-            <h2 className="font-heading text-3xl md:text-4xl font-semibold text-foreground mb-4">
+            <h2 className="font-heading text-3xl md:text-4xl font-semibold text-accent mb-4">
               Domenii în care lucrez
             </h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            <p className="text-accent text-lg max-w-2xl mx-auto">
               Fiecare serviciu este adaptat nevoilor tale specifice, folosind tehnici validate 
               științific din abordarea integrativă.
             </p>
@@ -300,7 +292,7 @@ const Servicii = () => {
       <section className="py-20 lg:py-28 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-14">
-            <p className="text-accent font-medium mb-3 tracking-wide uppercase text-sm">
+            <p className="text-secondary font-medium mb-3 tracking-wide uppercase text-sm">
               Cum funcționează
             </p>
             <h2 className="font-heading text-3xl md:text-4xl font-semibold text-foreground mb-4">
@@ -350,22 +342,22 @@ const Servicii = () => {
               </div>
               
               <div className="grid md:grid-cols-4 gap-6">
-                <div className="text-center p-4 rounded-xl bg-secondary/50">
+                <div className="text-center p-4 rounded-xl bg-secondary/20">
                   <div className="text-3xl mb-2">🧠</div>
                   <h4 className="font-medium text-foreground mb-1">Cognitiv-Comportamental</h4>
                   <p className="text-xs text-muted-foreground">Schimbarea gândurilor și comportamentelor disfuncționale</p>
                 </div>
-                <div className="text-center p-4 rounded-xl bg-secondary/50">
+                <div className="text-center p-4 rounded-xl bg-secondary/20">
                   <div className="text-3xl mb-2">💭</div>
                   <h4 className="font-medium text-foreground mb-1">Psihodinamic</h4>
                   <p className="text-xs text-muted-foreground">Înțelegerea tiparelor inconștiente din trecut</p>
                 </div>
-                <div className="text-center p-4 rounded-xl bg-secondary/50">
+                <div className="text-center p-4 rounded-xl bg-secondary/20">
                   <div className="text-3xl mb-2">❤️</div>
                   <h4 className="font-medium text-foreground mb-1">Umanist</h4>
                   <p className="text-xs text-muted-foreground">Accent pe potențialul și resursele personale</p>
                 </div>
-                <div className="text-center p-4 rounded-xl bg-secondary/50">
+                <div className="text-center p-4 rounded-xl bg-secondary/20">
                   <div className="text-3xl mb-2">🌱</div>
                   <h4 className="font-medium text-foreground mb-1">Mindfulness</h4>
                   <p className="text-xs text-muted-foreground">Prezență conștientă și reglare emoțională</p>
@@ -381,7 +373,7 @@ const Servicii = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-14">
-              <h2 className="font-heading text-3xl md:text-4xl font-semibold text-foreground mb-4">
+              <h2 className="font-heading text-3xl md:text-4xl font-semibold text-accent mb-4">
                 La ce să te aștepți
               </h2>
             </div>
@@ -394,19 +386,19 @@ const Servicii = () => {
                 </h3>
                 <ul className="space-y-3 text-muted-foreground">
                   <li className="flex items-start gap-2">
-                    <Check className="w-4 h-4 text-accent mt-1 flex-shrink-0" />
+                    <Check className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
                     <span>Cunoaștere reciprocă într-un cadru relaxat</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Check className="w-4 h-4 text-accent mt-1 flex-shrink-0" />
+                    <Check className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
                     <span>Discuție despre motivele pentru care cauți sprijin</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Check className="w-4 h-4 text-accent mt-1 flex-shrink-0" />
+                    <Check className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
                     <span>Clarificarea așteptărilor și obiectivelor</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Check className="w-4 h-4 text-accent mt-1 flex-shrink-0" />
+                    <Check className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
                     <span>Răspunsuri la întrebările tale</span>
                   </li>
                 </ul>
