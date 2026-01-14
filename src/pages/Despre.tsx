@@ -83,7 +83,7 @@ const Despre = () => {
 
             {/* Content */}
             <div className="order-1 lg:order-2 animate-fade-in-up">
-              <p className="text-accent font-medium mb-4 tracking-wide uppercase text-sm">
+              <p className="text-secondary font-medium mb-4 tracking -wide uppercase text-sm">
                 Despre mine
               </p>
               <h1 className="font-heading text-4xl md:text-5xl font-semibold text-foreground mb-6 leading-tight">
@@ -117,7 +117,7 @@ const Despre = () => {
               <div className="w-14 h-14 rounded-xl bg-accent/20 flex items-center justify-center mx-auto mb-6">
                 <Heart className="w-7 h-7 text-accent" />
               </div>
-              <h2 className="font-heading text-3xl md:text-4xl font-semibold text-foreground mb-4">
+              <h2 className="font-heading text-3xl md:text-4xl font-semibold text-accent mb-4">
                 Abordarea mea terapeutică
               </h2>
             </div>
@@ -149,18 +149,18 @@ const Despre = () => {
               <div className="grid md:grid-cols-3 gap-6 text-center">
                 <div>
                   <div className="text-3xl mb-2">🧠</div>
-                  <h4 className="font-medium text-foreground mb-1">Cognitiv-Comportamental</h4>
-                  <p className="text-sm text-muted-foreground">Restructurarea gândurilor și schimbarea comportamentelor</p>
+                  <h3 className="font-medium text-accent mb-3">Cognitiv-Comportamental</h3>
+                  <p className="text-sm text-accent/50">Restructurarea gândurilor și schimbarea comportamentelor</p>
                 </div>
                 <div>
                   <div className="text-3xl mb-2">💭</div>
-                  <h4 className="font-medium text-foreground mb-1">Psihodinamic</h4>
-                  <p className="text-sm text-muted-foreground">Înțelegerea tiparelor inconștiente și a istoriei personale</p>
+                  <h4 className="font-medium text-accent mb-3">Psihodinamic</h4>
+                  <p className="text-sm text-accent/50">Înțelegerea tiparelor inconștiente și a istoriei personale</p>
                 </div>
                 <div>
                   <div className="text-3xl mb-2">🌱</div>
-                  <h4 className="font-medium text-foreground mb-1">Mindfulness</h4>
-                  <p className="text-sm text-muted-foreground">Prezență conștientă și reglare emoțională</p>
+                  <h4 className="font-medium text-accent mb-3">Mindfulness</h4>
+                  <p className="text-sm text-accent/50">Prezență conștientă și reglare emoțională</p>
                 </div>
               </div>
             </div>
@@ -177,11 +177,11 @@ const Despre = () => {
           <div className="text-center mb-14">
             <div className="flex items-center justify-center gap-4 mb-6">
               <Award className="w-8 h-8 text-white" />
-              <h2 className="font-heading text-3xl md:text-4xl font-semibold text-foreground">
+              <h2 className="font-heading text-3xl md:text-4xl font-semibold text-accent">
                 Domenii de expertiză
               </h2>
             </div>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            <p className="text-accent text-lg max-w-2xl mx-auto">
               Îmi dedic activitatea profesională pentru a oferi sprijin în diverse provocări emoționale și de viață.
             </p>
           </div>
@@ -224,14 +224,14 @@ const Despre = () => {
                   key={index}
                   className="flex items-center gap-3 p-4 rounded-lg bg-background shadow-soft"
                 >
-                  <div className="w-2 h-2 rounded-full bg-accent flex-shrink-0" />
+                  <div className="w-2 h-2 rounded-full bg-foreground flex-shrink-0" />
                   <p className="text-foreground">{qualification}</p>
                 </div>
               ))}
             </div>
 
             <div className="mt-10 bg-accent/10 rounded-xl p-6 flex items-start gap-4">
-              <BookOpen className="w-6 h-6 text-accent flex-shrink-0 mt-1" />
+              <BookOpen className="w-6 h-6 text-foreground flex-shrink-0 mt-1" />
               <div>
                 <h3 className="font-heading font-semibold text-foreground mb-2">
                   Formare continuă
@@ -251,7 +251,7 @@ const Despre = () => {
       <section className="py-20 lg:py-28 bg-accent/10">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <p className="text-accent font-medium mb-3 tracking-wide uppercase text-sm">
+            <p className="text-secondary font-medium mb-3 tracking-wide uppercase text-sm">
               Oriunde te-ai afla
             </p>
             <h2 className="font-heading text-3xl md:text-4xl font-semibold text-foreground mb-6">

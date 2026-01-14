@@ -34,7 +34,7 @@ const Footer = () => {
 
       {/* Main Footer */}
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* Brand */}
           <div>
             <h3 className="font-heading text-2xl font-semibold mb-4">Natalia Șargu</h3>
@@ -113,7 +113,7 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-center gap-3 text-sm text-primary-foreground/80">
                 <MapPin className="w-4 h-4 flex-shrink-0" />
-                <span>Chișinău, Republica Moldova</span>
+                <span>Buiucani, Chișinău, Republica Moldova</span>
               </li>
               <li className="flex items-center gap-3 text-sm text-primary-foreground/80">
                 <Mail className="w-4 h-4 flex-shrink-0" />

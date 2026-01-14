@@ -13,7 +13,7 @@ const contactInfo = [
   {
     icon: MapPin,
     title: "Adresă",
-    value: "Chișinău, Republica Moldova",
+    value: "Buiucani, Chișinău, R. Moldova",
     detail: "Locația exactă se comunică la programare",
   },
   {
@@ -119,7 +119,7 @@ const Contact = () => {
       <section className="py-20 lg:py-28 gradient-hero">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center animate-fade-in-up">
-            <p className="text-accent font-medium mb-4 tracking-wide uppercase text-sm">
+            <p className="text-secondary font-medium mb-4 tracking-wide uppercase text-sm">
               Contact
             </p>
             <h1 className="font-heading text-4xl md:text-5xl font-semibold text-foreground mb-6 leading-tight">
@@ -140,11 +140,11 @@ const Contact = () => {
             {whyChoose.map((item, index) => {
               const Icon = item.icon;
               return (
-                <div key={index} className="text-center">
-                  <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mx-auto mb-3">
+                <div key={index} className="group flex flex-col items-start gap-4 p-6 rounded-xl bg-background border border-border/50 hover:border-accent/30 hover:shadow-soft transition-all duration-300">
+                  <div className="w-12 h-12 rounded-xl bg-primary/90 flex items-center justify-center mx-auto mb-3">
                     <Icon className="w-6 h-6 text-accent" />
                   </div>
-                  <h3 className="font-medium text-foreground text-sm mb-1">{item.title}</h3>
+                  <h3 className="font-medium text-foreground text-md ">{item.title}</h3>
                   <p className="text-xs text-muted-foreground">{item.description}</p>
                 </div>
               );
@@ -159,7 +159,7 @@ const Contact = () => {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 max-w-6xl mx-auto">
             {/* Contact Form */}
             <div>
-              <h2 className="font-heading text-2xl font-semibold text-foreground mb-2">
+              <h2 className="font-heading text-2xl font-semibold text-foreground mb-4">
                 Trimite un mesaj
               </h2>
               <p className="text-muted-foreground mb-6">
@@ -168,7 +168,7 @@ const Contact = () => {
               
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="space-y-2">
-                  <Label htmlFor="name">Numele complet *</Label>
+                  <Label htmlFor="name">Numele complet <span className="text-red-500">*</span></Label>
                   <Input
                     id="name"
                     name="name"
@@ -181,7 +181,7 @@ const Contact = () => {
 
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="email">Email *</Label>
+                    <Label htmlFor="email">Email <span className="text-red-500">*</span></Label>
                     <Input
                       id="email"
                       name="email"
@@ -212,7 +212,7 @@ const Contact = () => {
                       className={`flex items-center gap-3 p-4 rounded-lg border-2 cursor-pointer transition-all ${
                         formData.sessionType === "online"
                           ? "border-primary bg-primary/5"
-                          : "border-border hover:border-primary/50"
+                          : "border-border bg-accent hover:border-primary/50"
                       }`}
                     >
                       <input
@@ -233,7 +233,7 @@ const Contact = () => {
                       className={`flex items-center gap-3 p-4 rounded-lg border-2 cursor-pointer transition-all ${
                         formData.sessionType === "cabinet"
                           ? "border-primary bg-primary/5"
-                          : "border-border hover:border-primary/50"
+                          : "border-border bg-accent hover:border-primary/50"
                       }`}
                     >
                       <input
@@ -265,7 +265,7 @@ const Contact = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="message">Mesaj *</Label>
+                  <Label htmlFor="message">Mesaj <span className="text-red-500">*</span></Label>
                   <Textarea
                     id="message"
                     name="message"
@@ -274,10 +274,11 @@ const Contact = () => {
                     placeholder="Descrieți pe scurt motivul pentru care doriți să programați o ședință. Puteți menționa și disponibilitatea dvs..."
                     rows={5}
                     required
+                    className="bg-accent"
                   />
                 </div>
 
-                <div className="bg-secondary/50 rounded-lg p-4 text-sm text-muted-foreground">
+                <div className="bg-secondary/30 rounded-lg p-4 text-sm text-muted-foreground">
                   <p>
                     🔒 Informațiile tale sunt confidențiale și vor fi folosite doar pentru a te contacta 
                     în legătură cu programarea.
@@ -299,7 +300,7 @@ const Contact = () => {
 
             {/* Contact Info */}
             <div>
-              <h2 className="font-heading text-2xl font-semibold text-foreground mb-2">
+              <h2 className="font-heading text-2xl font-semibold text-foreground mb-4">
                 Informații de contact
               </h2>
               <p className="text-muted-foreground mb-6">
@@ -315,7 +316,7 @@ const Contact = () => {
                       className="flex items-start gap-4 p-5 rounded-xl bg-card border border-border/50 shadow-soft hover:shadow-medium transition-all"
                     >
                       <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
-                        <Icon className="w-5 h-5 text-accent" />
+                        <Icon className="w-5 h-5 text-primary" />
                       </div>
                       <div>
                         <h3 className="font-medium text-foreground mb-1">{info.title}</h3>
@@ -342,11 +343,11 @@ const Contact = () => {
               <div className="rounded-xl overflow-hidden border border-border/50 shadow-soft">
                 <div className="aspect-video bg-secondary flex items-center justify-center">
                   <div className="text-center p-8">
-                    <MapPin className="w-12 h-12 text-primary mx-auto mb-4 opacity-50" />
-                    <h3 className="font-heading text-lg font-semibold text-foreground mb-2">
+                    <MapPin className="w-12 h-12 text-accent mx-auto mb-4 opacity-50" />
+                    <h3 className="font-heading text-lg font-semibold text-accent mb-2">
                       Chișinău, Republica Moldova
                     </h3>
-                    <p className="text-muted-foreground text-sm">
+                    <p className="text-accent text-sm">
                       Locația exactă a cabinetului se comunică la programare
                     </p>
                   </div>
@@ -355,16 +356,19 @@ const Contact = () => {
 
               {/* Additional info */}
               <div className="mt-6 p-5 rounded-xl bg-accent/10 border border-accent/20">
-                <h3 className="font-heading font-semibold text-foreground mb-2">
+                <h3 className="font-heading font-semibold text-primary mb-3">
                   Nu ești sigur dacă terapia este pentru tine?
                 </h3>
                 <p className="text-muted-foreground text-sm mb-3">
                   Este normal să ai întrebări sau îndoieli. Prima ședință este o oportunitate 
                   de cunoaștere, fără niciun angajament. Poți decide apoi dacă vrei să continui.
                 </p>
-                <p className="text-sm text-foreground font-medium">
-                  Scrie-mi și îți voi răspunde cu plăcere la orice întrebare.
-                </p>
+                <div className="flex items-center gap-3">
+                  <MessageCircle className="w-5 h-5 text-primary" />
+                  <p className="text-sm text-primary font-medium">
+                    Scrie-mi și îți voi răspunde cu plăcere la orice întrebare.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -376,7 +380,7 @@ const Contact = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-14">
-              <h2 className="font-heading text-3xl font-semibold text-foreground mb-4">
+              <h2 className="font-heading text-3xl font-semibold text-accent mb-4">
                 Întrebări frecvente despre programare
               </h2>
             </div>

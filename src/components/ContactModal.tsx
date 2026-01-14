@@ -75,7 +75,7 @@ const ContactModal = ({ isOpen, onClose, serviceTitle }: ContactModalProps) => {
 
         <form onSubmit={handleSubmit} className="space-y-4 mt-4">
           <div className="space-y-2">
-            <Label htmlFor="modal-name">Numele complet *</Label>
+            <Label htmlFor="modal-name">Numele complet <span className="text-red-500">*</span></Label>
             <Input
               id="modal-name"
               name="name"
@@ -87,7 +87,7 @@ const ContactModal = ({ isOpen, onClose, serviceTitle }: ContactModalProps) => {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="modal-email">Email *</Label>
+            <Label htmlFor="modal-email">Email <span className="text-red-500">*</span></Label>
             <Input
               id="modal-email"
               name="email"
@@ -112,7 +112,7 @@ const ContactModal = ({ isOpen, onClose, serviceTitle }: ContactModalProps) => {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="modal-message">Mesaj *</Label>
+            <Label htmlFor="modal-message">Mesaj <span className="text-red-500">*</span></Label>
             <Textarea
               id="modal-message"
               name="message"
@@ -123,10 +123,11 @@ const ContactModal = ({ isOpen, onClose, serviceTitle }: ContactModalProps) => {
                 : "Descrieți pe scurt motivul pentru care doriți să programați o ședință..."}
               rows={4}
               required
+              className="bg-accent"
             />
           </div>
 
-          <div className="bg-secondary/50 rounded-lg p-3 text-sm text-muted-foreground">
+          <div className="bg-secondary/30 rounded-lg p-3 text-sm text-muted-foreground">
             <p>
               🔒 Informațiile tale sunt confidențiale și vor fi folosite doar pentru a te contacta
               în legătură cu programarea.

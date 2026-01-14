@@ -114,13 +114,13 @@ const FAQ = () => {
       <section className="py-16 lg:py-20 bg-secondary">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <p className="text-primary font-medium mb-3 tracking-wide uppercase text-sm">
+            <p className="text-accent/70 font-medium mb-3 tracking-wide uppercase text-sm">
               FAQ
             </p>
-            <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground mb-6">
+            <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-semibold text-accent mb-6">
               Întrebări frecvente
             </h1>
-            <p className="text-muted-foreground text-lg leading-relaxed">
+            <p className="text-accent text-lg leading-relaxed">
               Răspunsuri la cele mai comune întrebări despre procesul terapeutic, ședințe și ce poți aștepta de la psihoterapie.
             </p>
           </div>
@@ -155,10 +155,10 @@ const FAQ = () => {
       <section className="py-16 lg:py-20 bg-secondary">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto text-center">
-            <h2 className="font-heading text-2xl md:text-3xl font-semibold text-foreground mb-4">
+            <h2 className="font-heading text-2xl md:text-3xl font-semibold text-accent mb-4">
               Mai ai întrebări?
             </h2>
-            <p className="text-muted-foreground mb-8">
+            <p className="text-accent/70 mb-8">
               Nu ezita să mă contactezi. Sunt aici să te ajut.
             </p>
             <Button asChild size="lg">
