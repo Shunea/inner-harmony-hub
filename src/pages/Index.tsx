@@ -7,6 +7,7 @@ import SEO from "@/components/SEO";
 import ProcessSection from "@/components/sections/ProcessSection";
 import CTASection from "@/components/sections/CTASection";
 import ContactModal from "@/components/ContactModal";
+import { SocialMediaPosts } from "@/components/SocialMediaPosts";
 import { getLocalBusinessSchema, getPersonSchema } from "@/utils/structuredData";
 import nataliaPortrait from "@/assets/natalia-portrait.jpg";
 import heroAbstract from "@/assets/hero-abstract.jpg";
@@ -304,6 +305,9 @@ const Index = () => {
           </blockquote>
         </div>
       </section>
+
+      {/* Social Media Posts */}
+      <SocialMediaPosts />
 
       {/* CTA Section */}
       <CTASection />
