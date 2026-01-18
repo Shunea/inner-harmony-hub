@@ -248,11 +248,11 @@ const Servicii = () => {
                       </p>
 
                       <div className="mb-4">
-                        <p className="text-sm font-medium text-foreground mb-2">Ce include:</p>
-                        <ul className="space-y-1">
+                        <p className="text-sm font-medium text-foreground mb-3">Ce include:</p>
+                        <ul className="space-y-2">
                           {service.featuresRo.map((feature, idx) => (
-                            <li key={idx} className="flex items-center gap-2 text-sm text-muted-foreground">
-                              <Sparkles className="w-3 h-3 text-accent flex-shrink-0" />
+                            <li key={idx} className="flex items-start gap-2 text-sm text-muted-foreground">
+                              <span className="text-primary mt-0.5 flex-shrink-0">•</span>
                               <span>{feature}</span>
                             </li>
                           ))}
