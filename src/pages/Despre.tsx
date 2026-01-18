@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, GraduationCap, Award, Heart, BookOpen, Calendar } from "lucide-react";
+import { ArrowRight, GraduationCap, Award, Heart, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
@@ -7,7 +7,6 @@ import ValuesSection from "@/components/sections/ValuesSection";
 import CTASection from "@/components/sections/CTASection";
 import { getPersonSchema, getBreadcrumbSchema } from "@/utils/structuredData";
 import nataliaSeated from "@/assets/natalia-seated.jpg";
-import nataliaPortrait from "@/assets/natalia-portrait.jpg";
 
 const qualifications = [
   "Psiholog, Master în Psihologie Clinică",
@@ -46,38 +45,6 @@ const expertise = [
   },
 ];
 
-const timeline = [
-  {
-    year: "2017",
-    title: "Licență în Psihologie",
-    description: "Absolvirea studiilor universitare în psihologie",
-  },
-  {
-    year: "2019",
-    title: "Master în Psihologie Clinică",
-    description: "Specializare aprofundată în evaluare și intervenție clinică",
-  },
-  {
-    year: "2020",
-    title: "Master în Psihologie Organizațională",
-    description: "Competențe extinse pentru lucrul cu adulți în context profesional",
-  },
-  {
-    year: "2021",
-    title: "Formare Psihoterapie Integrativă",
-    description: "Început program de formare în psihoterapie integrativă",
-  },
-  {
-    year: "2022",
-    title: "Specializare Anxietate & Traumă",
-    description: "Certificări specializate pentru lucrul cu anxietatea și trauma",
-  },
-  {
-    year: "Prezent",
-    title: "Practică Activă",
-    description: "Cabinet privat în Chișinău și ședințe online",
-  },
-];
 
 const Despre = () => {
   const breadcrumbSchema = getBreadcrumbSchema([
@@ -116,7 +83,7 @@ const Despre = () => {
 
             {/* Content */}
             <div className="order-1 lg:order-2 animate-fade-in-up">
-              <p className="text-accent font-medium mb-4 tracking-wide uppercase text-sm">
+              <p className="text-secondary font-medium mb-4 tracking -wide uppercase text-sm">
                 Despre mine
               </p>
               <h1 className="font-heading text-4xl md:text-5xl font-semibold text-foreground mb-6 leading-tight">
@@ -133,8 +100,7 @@ const Despre = () => {
                   dificile, înțelegerea tiparelor relaționale, creșterea stimei de sine și dezvoltarea resurselor interne.
                 </p>
                 <p>
-                  Am ales să devin psihoterapeut pentru că cred profund în capacitatea fiecărei persoane de a se vindeca 
-                  și de a crește. Fiecare poveste este unică, și mă onorează să fiu parte din călătoria ta.
+                  Am ales să devin psihoterapeut din dorința de a înțelege mai profund suferința emoțională și de a crea un spațiu în care oamenii să se simtă văzuți, ascultați și în siguranță. Abordarea integrativă îmi permite să adaptez intervențiile la nevoile fiecărui client, folosind metode validate științific, într-un cadru clar și structurat. Ofer ședințe într-un spațiu sigur și confidențial, în care procesul terapeutic se desfășoară cu respect, profesionalism și grijă față de limitele fiecărei persoane.
                 </p>
               </div>
             </div>
@@ -142,49 +108,6 @@ const Despre = () => {
         </div>
       </section>
 
-      {/* Personal Story Section */}
-      <section className="py-20 lg:py-28 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="grid md:grid-cols-5 gap-10 items-center">
-              <div className="md:col-span-3">
-                <p className="text-primary font-medium mb-3 tracking-wide uppercase text-sm">
-                  Povestea mea
-                </p>
-                <h2 className="font-heading text-3xl font-semibold text-foreground mb-6">
-                  De ce am ales acest drum
-                </h2>
-                <div className="space-y-4 text-muted-foreground leading-relaxed">
-                  <p>
-                    Pasiunea mea pentru psihologie a început încă din adolescență, când am descoperit puterea 
-                    conversațiilor autentice și a înțelegerii profunde. Am realizat că cel mai mare dar pe care 
-                    îl putem oferi cuiva este să-l ascultăm cu adevărat.
-                  </p>
-                  <p>
-                    De-a lungul anilor de formare și practică, am învățat că vindecarea nu vine din sfaturi sau 
-                    soluții rapide, ci din relația terapeutică — un spațiu sigur în care poți fi tu însuți/însăți, 
-                    fără judecată.
-                  </p>
-                  <p>
-                    Fiecare persoană cu care lucrez mă învață ceva nou despre reziliență, curaj și capacitatea 
-                    umană de transformare. Este un privilegiu să fac parte din aceste povești.
-                  </p>
-                </div>
-              </div>
-              <div className="md:col-span-2">
-                <div className="relative">
-                  <img
-                    src={nataliaPortrait}
-                    alt="Natalia Șargu"
-                    className="rounded-xl shadow-soft"
-                  />
-                  <div className="absolute -z-10 -bottom-4 -right-4 w-full h-full bg-accent/20 rounded-xl" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Approach Section */}
       <section className="py-20 lg:py-28 bg-secondary">
@@ -194,7 +117,7 @@ const Despre = () => {
               <div className="w-14 h-14 rounded-xl bg-accent/20 flex items-center justify-center mx-auto mb-6">
                 <Heart className="w-7 h-7 text-accent" />
               </div>
-              <h2 className="font-heading text-3xl md:text-4xl font-semibold text-foreground mb-4">
+              <h2 className="font-heading text-3xl md:text-4xl font-semibold text-accent mb-4">
                 Abordarea mea terapeutică
               </h2>
             </div>
@@ -226,18 +149,18 @@ const Despre = () => {
               <div className="grid md:grid-cols-3 gap-6 text-center">
                 <div>
                   <div className="text-3xl mb-2">🧠</div>
-                  <h4 className="font-medium text-foreground mb-1">Cognitiv-Comportamental</h4>
-                  <p className="text-sm text-muted-foreground">Restructurarea gândurilor și schimbarea comportamentelor</p>
+                  <h3 className="font-medium text-accent mb-3">Cognitiv-Comportamental</h3>
+                  <p className="text-sm text-accent/50">Restructurarea gândurilor și schimbarea comportamentelor</p>
                 </div>
                 <div>
                   <div className="text-3xl mb-2">💭</div>
-                  <h4 className="font-medium text-foreground mb-1">Psihodinamic</h4>
-                  <p className="text-sm text-muted-foreground">Înțelegerea tiparelor inconștiente și a istoriei personale</p>
+                  <h4 className="font-medium text-accent mb-3">Psihodinamic</h4>
+                  <p className="text-sm text-accent/50">Înțelegerea tiparelor inconștiente și a istoriei personale</p>
                 </div>
                 <div>
                   <div className="text-3xl mb-2">🌱</div>
-                  <h4 className="font-medium text-foreground mb-1">Mindfulness</h4>
-                  <p className="text-sm text-muted-foreground">Prezență conștientă și reglare emoțională</p>
+                  <h4 className="font-medium text-accent mb-3">Mindfulness</h4>
+                  <p className="text-sm text-accent/50">Prezență conștientă și reglare emoțională</p>
                 </div>
               </div>
             </div>
@@ -254,11 +177,11 @@ const Despre = () => {
           <div className="text-center mb-14">
             <div className="flex items-center justify-center gap-4 mb-6">
               <Award className="w-8 h-8 text-white" />
-              <h2 className="font-heading text-3xl md:text-4xl font-semibold text-foreground">
+              <h2 className="font-heading text-3xl md:text-4xl font-semibold text-accent">
                 Domenii de expertiză
               </h2>
             </div>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            <p className="text-accent text-lg max-w-2xl mx-auto">
               Îmi dedic activitatea profesională pentru a oferi sprijin în diverse provocări emoționale și de viață.
             </p>
           </div>
@@ -281,52 +204,6 @@ const Despre = () => {
         </div>
       </section>
 
-      {/* Timeline Section */}
-      <section className="py-20 lg:py-28 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-14">
-              <div className="w-14 h-14 rounded-xl bg-accent/20 flex items-center justify-center mx-auto mb-6">
-                <Calendar className="w-7 h-7 text-accent" />
-              </div>
-              <h2 className="font-heading text-3xl md:text-4xl font-semibold text-foreground mb-4">
-                Parcursul meu profesional
-              </h2>
-            </div>
-
-            <div className="relative">
-              {/* Timeline line */}
-              <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-border md:-translate-x-0.5" />
-
-              <div className="space-y-8">
-                {timeline.map((item, index) => (
-                  <div
-                    key={index}
-                    className={`relative flex items-center gap-6 ${
-                      index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                    }`}
-                  >
-                    {/* Dot */}
-                    <div className="absolute left-4 md:left-1/2 w-3 h-3 bg-primary rounded-full md:-translate-x-1.5 z-10" />
-                    
-                    {/* Content */}
-                    <div className={`flex-1 ml-12 md:ml-0 ${index % 2 === 0 ? "md:pr-12 md:text-right" : "md:pl-12"}`}>
-                      <div className="bg-card rounded-xl p-5 shadow-soft border border-border/50 inline-block">
-                        <span className="text-primary font-bold text-lg">{item.year}</span>
-                        <h3 className="font-heading font-semibold text-foreground mt-1">{item.title}</h3>
-                        <p className="text-muted-foreground text-sm mt-1">{item.description}</p>
-                      </div>
-                    </div>
-                    
-                    {/* Spacer for alternating layout */}
-                    <div className="hidden md:block flex-1" />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Qualifications Section */}
       <section className="py-20 lg:py-28 bg-card">
@@ -347,14 +224,14 @@ const Despre = () => {
                   key={index}
                   className="flex items-center gap-3 p-4 rounded-lg bg-background shadow-soft"
                 >
-                  <div className="w-2 h-2 rounded-full bg-accent flex-shrink-0" />
+                  <div className="w-2 h-2 rounded-full bg-foreground flex-shrink-0" />
                   <p className="text-foreground">{qualification}</p>
                 </div>
               ))}
             </div>
 
             <div className="mt-10 bg-accent/10 rounded-xl p-6 flex items-start gap-4">
-              <BookOpen className="w-6 h-6 text-accent flex-shrink-0 mt-1" />
+              <BookOpen className="w-6 h-6 text-foreground flex-shrink-0 mt-1" />
               <div>
                 <h3 className="font-heading font-semibold text-foreground mb-2">
                   Formare continuă
@@ -374,7 +251,7 @@ const Despre = () => {
       <section className="py-20 lg:py-28 bg-accent/10">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <p className="text-accent font-medium mb-3 tracking-wide uppercase text-sm">
+            <p className="text-secondary font-medium mb-3 tracking-wide uppercase text-sm">
               Oriunde te-ai afla
             </p>
             <h2 className="font-heading text-3xl md:text-4xl font-semibold text-foreground mb-6">

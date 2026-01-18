@@ -44,7 +44,7 @@ const ValuesSection = () => {
     <section className="py-20 lg:py-28 bg-card">
       <div className="container mx-auto px-4">
         <div className="text-center mb-14">
-          <p className="text-accent font-medium mb-3 tracking-wide uppercase text-sm">
+          <p className="text-secondary font-medium mb-3 tracking-wide uppercase text-sm">
             Filozofia mea
           </p>
           <h2 className="font-heading text-3xl md:text-4xl font-semibold text-foreground mb-4">
@@ -64,7 +64,7 @@ const ValuesSection = () => {
                 className="group flex items-start gap-4 p-6 rounded-xl bg-background border border-border/50 hover:border-accent/30 hover:shadow-soft transition-all duration-300"
               >
                 <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0 group-hover:bg-accent/20 transition-colors">
-                  <Icon className="w-6 h-6 text-accent" />
+                  <Icon className="w-6 h-6 text-foreground" />
                 </div>
                 <div>
                   <h3 className="font-heading text-lg font-semibold text-foreground mb-1">
