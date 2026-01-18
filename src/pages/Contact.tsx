@@ -8,6 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
 import { getBreadcrumbSchema } from "@/utils/structuredData";
+import { submitContactForm } from "@/api/forms";
 
 const contactInfo = [
   {
@@ -82,23 +83,39 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      // Prepare message with session type and subject
+      const fullMessage = `Tip ședință: ${formData.sessionType}\nSubiect: ${formData.subject}\n\n${formData.message}`;
 
-    toast({
-      title: "Mesaj trimis cu succes!",
-      description: "Vă voi contacta în cel mai scurt timp posibil pentru a stabili o întâlnire.",
-    });
+      await submitContactForm({
+        fullName: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        message: fullMessage,
+      });
 
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      sessionType: "online",
-      subject: "",
-      message: "",
-    });
-    setIsSubmitting(false);
+      toast({
+        title: "Mesaj trimis cu succes!",
+        description: "Vă voi contacta în cel mai scurt timp posibil pentru a stabili o întâlnire.",
+      });
+
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        sessionType: "online",
+        subject: "",
+        message: "",
+      });
+    } catch (error) {
+      toast({
+        title: "Eroare",
+        description: "Mesajul nu a putut fi trimis. Vă rugăm încercați din nou.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const breadcrumbSchema = getBreadcrumbSchema([

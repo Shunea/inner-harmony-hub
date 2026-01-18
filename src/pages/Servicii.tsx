@@ -1,58 +1,28 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 import { ArrowRight, Clock, Users, Sparkles, Brain, Heart, Shield, Target, Flower2, Check, MessageCircle, Video, Building } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { LoadingSpinner } from "@/components/ui/loading-spinner";
+import { ErrorMessage } from "@/components/ui/error-message";
 import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
 import FAQSection from "@/components/sections/FAQSection";
 import CTASection from "@/components/sections/CTASection";
 import ContactModal from "@/components/ContactModal";
 import { getServiceSchema, getBreadcrumbSchema } from "@/utils/structuredData";
+import { getServices } from "@/api/services";
 
-const services = [
-  {
-    icon: Brain,
-    title: "Terapie pentru Anxietate",
-    description: "Gestionarea anxietății, atacurilor de panică și a stresului cronic prin tehnici validate științific.",
-    details: ["Tehnici de relaxare și respirație", "Restructurare cognitivă", "Mindfulness aplicat", "Expunere graduală"],
-    forWhom: "Pentru tine dacă simți neliniște constantă, atacuri de panică, griji excesive sau evitare.",
-  },
-  {
-    icon: Heart,
-    title: "Terapie pentru Depresie",
-    description: "Sprijin în procesul de recuperare, reconstrucția motivației și a sensului vieții.",
-    details: ["Activare comportamentală", "Procesare emoțională", "Reconstrucție cognitivă", "Prevenție recăderi"],
-    forWhom: "Pentru tine dacă simți tristețe persistentă, lipsă de energie, pierderea interesului sau gânduri negative.",
-  },
-  {
-    icon: Shield,
-    title: "Lucrul cu Trauma",
-    description: "Procesarea experiențelor traumatice într-un ritm sigur și respectuos.",
-    details: ["Stabilizare emoțională", "Procesare trauma", "Integrare resurse", "Vindecare relațională"],
-    forWhom: "Pentru tine dacă ai trecut prin experiențe dureroase care încă te afectează emoțional.",
-  },
-  {
-    icon: Users,
-    title: "Dificultăți Relaționale",
-    description: "Înțelegerea tiparelor relaționale și dezvoltarea unor relații mai sănătoase.",
-    details: ["Comunicare asertivă", "Limite sănătoase", "Dependență emoțională", "Îmbunătățire relații"],
-    forWhom: "Pentru tine dacă te confrunți cu conflicte repetitive, dificultăți de comunicare sau relații toxice.",
-  },
-  {
-    icon: Target,
-    title: "Dezvoltare Personală",
-    description: "Claritate interioară, autocunoaștere și realizarea potențialului personal.",
-    details: ["Definirea obiectivelor", "Creșterea încrederii", "Luarea deciziilor", "Autenticitate"],
-    forWhom: "Pentru tine dacă vrei să te cunoști mai bine, să-ți clarifici valorile și să îți atingi potențialul.",
-  },
-  {
-    icon: Flower2,
-    title: "Mindfulness și Reglare Emoțională",
-    description: "Tehnici de conștientizare și echilibru emoțional pentru viața de zi cu zi.",
-    details: ["Meditație ghidată", "Respirație conștientă", "Gestionare emoții", "Prezență"],
-    forWhom: "Pentru tine dacă vrei să înveți să-ți reglezi emoțiile și să fii mai prezent în viața de zi cu zi.",
-  },
-];
+// Icon mapping for service icons from backend
+const iconMap: Record<string, any> = {
+  Brain,
+  Heart,
+  Shield,
+  Users,
+  Target,
+  Flower2,
+  Sparkles,
+};
 
 const sessionTypes = [
   {
@@ -117,6 +87,12 @@ const processSteps = [
 const Servicii = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedService, setSelectedService] = useState<string>("");
+
+  // Fetch services from API
+  const { data: apiServices, isLoading, error } = useQuery({
+    queryKey: ['services'],
+    queryFn: getServices,
+  });
 
   const handleServiceClick = (serviceTitle: string) => {
     setSelectedService(serviceTitle);
@@ -238,54 +214,78 @@ const Servicii = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => {
-              const Icon = service.icon;
-              return (
-                <article
-                  key={index}
-                  className="group bg-background rounded-2xl p-8 shadow-soft hover:shadow-medium border border-border/50 transition-all duration-300 hover:-translate-y-1"
-                >
-                  <div className="w-14 h-14 rounded-xl bg-secondary flex items-center justify-center mb-6 group-hover:bg-secondary/80 transition-colors">
-                    <Icon className="w-7 h-7 text-white" />
-                  </div>
-                  <h3 className="font-heading text-xl font-semibold text-foreground mb-3">
-                    {service.title}
-                  </h3>
-                  <p className="text-muted-foreground mb-4 leading-relaxed">
-                    {service.description}
-                  </p>
-                  
-                  <div className="mb-4">
-                    <p className="text-sm font-medium text-foreground mb-2">Ce include:</p>
-                    <ul className="space-y-1">
-                      {service.details.map((detail, idx) => (
-                        <li key={idx} className="flex items-center gap-2 text-sm text-muted-foreground">
-                          <Sparkles className="w-3 h-3 text-accent flex-shrink-0" />
-                          <span>{detail}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  
-                  <div className="pt-4 border-t border-border mb-4">
-                    <p className="text-sm text-muted-foreground italic">
-                      {service.forWhom}
-                    </p>
-                  </div>
+          {isLoading && (
+            <div className="flex justify-center">
+              <LoadingSpinner />
+            </div>
+          )}
 
-                  <Button
-                    onClick={() => handleServiceClick(service.title)}
-                    className="w-full"
-                    size="sm"
-                  >
-                    Programează ședință
-                    <ArrowRight className="ml-2 w-4 h-4" />
-                  </Button>
-                </article>
-              );
-            })}
-          </div>
+          {error && (
+            <ErrorMessage message="Nu s-au putut încărca serviciile. Vă rugăm încercați din nou mai târziu." />
+          )}
+
+          {apiServices && apiServices.length > 0 && (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {apiServices
+                .sort((a, b) => a.orderIndex - b.orderIndex)
+                .map((service) => {
+                  // Get icon from firstIconPath or default to Brain
+                  const Icon = service.firstIconPath ? iconMap[service.firstIconPath] || Brain : Brain;
+
+                  return (
+                    <article
+                      key={service.id}
+                      className="group bg-background rounded-2xl p-8 shadow-soft hover:shadow-medium border border-border/50 transition-all duration-300 hover:-translate-y-1"
+                    >
+                      <div className="w-14 h-14 rounded-xl bg-secondary flex items-center justify-center mb-6 group-hover:bg-secondary/80 transition-colors">
+                        <Icon className="w-7 h-7 text-white" />
+                      </div>
+                      <h3 className="font-heading text-xl font-semibold text-foreground mb-3">
+                        {service.titleRo}
+                      </h3>
+                      <p className="text-muted-foreground mb-4 leading-relaxed">
+                        {service.descRo}
+                      </p>
+
+                      <div className="mb-4">
+                        <p className="text-sm font-medium text-foreground mb-2">Ce include:</p>
+                        <ul className="space-y-1">
+                          {service.featuresRo.map((feature, idx) => (
+                            <li key={idx} className="flex items-center gap-2 text-sm text-muted-foreground">
+                              <Sparkles className="w-3 h-3 text-accent flex-shrink-0" />
+                              <span>{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      {service.price && (
+                        <div className="pt-4 border-t border-border mb-4">
+                          <p className="text-sm font-medium text-foreground">
+                            Preț: <span className="text-primary">{service.price}</span>
+                          </p>
+                        </div>
+                      )}
+
+                      <Button
+                        onClick={() => handleServiceClick(service.titleRo)}
+                        className="w-full"
+                        size="sm"
+                      >
+                        Programează ședință
+                        <ArrowRight className="ml-2 w-4 h-4" />
+                      </Button>
+                    </article>
+                  );
+                })}
+            </div>
+          )}
+
+          {apiServices && apiServices.length === 0 && (
+            <div className="text-center text-muted-foreground py-12">
+              <p>Nu există servicii disponibile momentan.</p>
+            </div>
+          )}
         </div>
       </section>
 

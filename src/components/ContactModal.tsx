@@ -12,6 +12,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
+import { submitContactForm } from "@/api/forms";
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -40,23 +41,41 @@ const ContactModal = ({ isOpen, onClose, serviceTitle }: ContactModalProps) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      // Prepare message with service title if provided
+      const fullMessage = serviceTitle
+        ? `Serviciu solicitat: ${serviceTitle}\n\n${formData.message}`
+        : formData.message;
 
-    toast({
-      title: "Mesaj trimis cu succes!",
-      description: "Vă voi contacta în cel mai scurt timp posibil pentru a stabili o întâlnire.",
-    });
+      await submitContactForm({
+        fullName: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        message: fullMessage,
+      });
 
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      message: "",
-    });
-    setIsSubmitting(false);
-    onClose();
+      toast({
+        title: "Mesaj trimis cu succes!",
+        description: "Vă voi contacta în cel mai scurt timp posibil pentru a stabili o întâlnire.",
+      });
+
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+      });
+      onClose();
+    } catch (error) {
+      toast({
+        title: "Eroare",
+        description: "Mesajul nu a putut fi trimis. Vă rugăm încercați din nou.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
