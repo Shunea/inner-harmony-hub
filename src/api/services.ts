@@ -18,10 +18,48 @@ export interface ServiceNew {
 
 export const getServices = async (): Promise<ServiceNew[]> => {
   const response = await apiClient.get('/services');
-  return response.data;
+
+  // Process featuresRo - backend returns array with JSON string inside
+  return response.data.map((service: any) => {
+    let parsedFeatures: string[] = [];
+
+    try {
+      // featuresRo is an array containing a JSON string
+      if (service.featuresRo && Array.isArray(service.featuresRo) && service.featuresRo.length > 0) {
+        // Parse the JSON string inside the array
+        parsedFeatures = JSON.parse(service.featuresRo[0]);
+      }
+    } catch (e) {
+      console.error('Error parsing featuresRo:', e);
+      parsedFeatures = [];
+    }
+
+    return {
+      ...service,
+      featuresRo: parsedFeatures
+    };
+  });
 };
 
 export const getServiceById = async (id: number): Promise<ServiceNew> => {
   const response = await apiClient.get(`/services/${id}`);
-  return response.data;
+  const service = response.data;
+
+  let parsedFeatures: string[] = [];
+
+  try {
+    // featuresRo is an array containing a JSON string
+    if (service.featuresRo && Array.isArray(service.featuresRo) && service.featuresRo.length > 0) {
+      // Parse the JSON string inside the array
+      parsedFeatures = JSON.parse(service.featuresRo[0]);
+    }
+  } catch (e) {
+    console.error('Error parsing featuresRo:', e);
+    parsedFeatures = [];
+  }
+
+  return {
+    ...service,
+    featuresRo: parsedFeatures
+  };
 };
