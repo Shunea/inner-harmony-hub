@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { LoadingSpinner } from "@/components/ui/loading-spinner";
 import { ErrorMessage } from "@/components/ui/error-message";
 import { getBlogPostById, getBlogPosts } from "@/api/blog";
+import { formatBackendText } from "@/lib/text-formatter";
 
 // Funcție pentru calcularea timpului de citire bazat pe text
 const calculateReadTime = (text: string): string => {
@@ -159,7 +160,7 @@ const BlogArticle = () => {
               {post.firstSubheadingTitleRo && (
                 <>
                   <h2>{post.firstSubheadingTitleRo}</h2>
-                  <p>{post.firstSubheadingTextRo}</p>
+                  <div dangerouslySetInnerHTML={{ __html: formatBackendText(post.firstSubheadingTextRo) }} />
                 </>
               )}
 
@@ -167,7 +168,7 @@ const BlogArticle = () => {
               {post.secondSubheadingTitleRo && (
                 <>
                   <h2>{post.secondSubheadingTitleRo}</h2>
-                  <p>{post.secondSubheadingTextRo}</p>
+                  <div dangerouslySetInnerHTML={{ __html: formatBackendText(post.secondSubheadingTextRo || '') }} />
                 </>
               )}
 
@@ -175,13 +176,13 @@ const BlogArticle = () => {
               {post.thirdSubheadingTitleRo && (
                 <>
                   <h2>{post.thirdSubheadingTitleRo}</h2>
-                  <p>{post.thirdSubheadingTextRo}</p>
+                  <div dangerouslySetInnerHTML={{ __html: formatBackendText(post.thirdSubheadingTextRo || '') }} />
                 </>
               )}
 
               {/* Conclusion */}
               {post.conclusionRo && (
-                <p className="mt-8 font-medium">{post.conclusionRo}</p>
+                <div className="mt-8 font-medium" dangerouslySetInnerHTML={{ __html: formatBackendText(post.conclusionRo) }} />
               )}
             </div>
 
