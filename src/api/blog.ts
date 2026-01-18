@@ -2,7 +2,7 @@ import apiClient from '@/lib/api-client';
 
 export interface BlogPost {
   id: number;
-  titleRo: string;
+  blogTitleRo: string;
   blogIntroRo: string;
   titleImagePath: string;
   titleImageAltTextRo: string;
@@ -16,8 +16,7 @@ export interface BlogPost {
   metaDescriptionRo: string;
   metaKeywordsRo: string;
   publishingDate: string;
-  author: string;
-  category: string;
+  publishedAt?: string;
   label: string;
 }
 

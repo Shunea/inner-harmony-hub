@@ -65,9 +65,9 @@ const BlogArticle = () => {
     );
   }
 
-  // Get related posts (same category, excluding current)
+  // Get related posts (same label, excluding current)
   const relatedPosts = allPosts
-    ? allPosts.filter((p) => p.category === post.category && p.id !== post.id).slice(0, 2)
+    ? allPosts.filter((p) => p.label === post.label && p.id !== post.id).slice(0, 2)
     : [];
 
   // Calculate read time based on full content
@@ -77,7 +77,7 @@ const BlogArticle = () => {
   return (
     <Layout>
       <Helmet>
-        <title>{post.titleRo} - Blog Natalia Șargu</title>
+        <title>{post.blogTitleRo} - Blog Natalia Șargu</title>
         <meta name="description" content={post.metaDescriptionRo} />
         <meta name="keywords" content={post.metaKeywordsRo} />
       </Helmet>
@@ -96,11 +96,11 @@ const BlogArticle = () => {
           {/* Article Header */}
           <div className="max-w-4xl mx-auto">
             <span className="inline-block px-3 py-1 text-sm font-medium bg-accent text-accent-foreground rounded-full mb-6">
-              {post.category}
+              {post.label}
             </span>
 
             <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-semibold text-primary mb-6 leading-tight">
-              {post.titleRo}
+              {post.blogTitleRo}
             </h1>
 
             <p className="text-lg text-muted-foreground mb-8">
@@ -111,7 +111,7 @@ const BlogArticle = () => {
             <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground pb-8 border-b border-border">
               <div className="flex items-center gap-2">
                 <User className="w-4 h-4" />
-                <span>{post.author}</span>
+                <span>Natalia Șargu</span>
               </div>
               <div className="flex items-center gap-2">
                 <Calendar className="w-4 h-4" />
@@ -226,7 +226,7 @@ const BlogArticle = () => {
                     </div>
                     <div className="p-5">
                       <h3 className="font-heading text-lg font-semibold text-primary group-hover:text-primary/80 transition-colors line-clamp-2">
-                        {relatedPost.titleRo}
+                        {relatedPost.blogTitleRo}
                       </h3>
                       <p className="text-sm text-muted-foreground mt-2 line-clamp-2">
                         {relatedPost.blogIntroRo}

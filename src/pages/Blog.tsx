@@ -78,12 +78,12 @@ const Blog = () => {
 
                     <div className="p-6">
                       <span className="inline-block px-3 py-1 text-xs font-medium bg-accent text-accent-foreground rounded-full mb-4">
-                        {post.category}
+                        {post.label}
                       </span>
 
                       <Link to={`/blog/${post.id}`}>
                         <h2 className="font-heading text-xl font-semibold text-primary mb-3 group-hover:text-primary/80 transition-colors line-clamp-2">
-                          {post.titleRo}
+                          {post.blogTitleRo}
                         </h2>
                       </Link>
 
