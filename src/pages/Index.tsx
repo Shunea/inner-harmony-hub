@@ -52,7 +52,7 @@ const Index = () => {
         structuredData={structuredData}
       />
       {/* Hero Section - Side by Side Layout */}
-      <section className="relative py-16 lg:py-20 overflow-hidden bg-background">
+      <section className="relative py-12 lg:py-16 overflow-hidden bg-background">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img
@@ -135,7 +135,7 @@ const Index = () => {
       </section>
 
       {/* Challenges Section - Domenii în care te pot ajuta */}
-      <section className="py-20 lg:py-28 bg-secondary">
+      <section className="py-12 lg:py-16 bg-secondary">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-14">
             <p className="text-accent/70 font-medium mb-3 tracking-wide uppercase text-sm">
@@ -179,7 +179,7 @@ const Index = () => {
       </section>
 
       {/* Therapy Modes Section */}
-      <section className="py-20 lg:py-28 bg-background">
+      <section className="py-12 lg:py-16 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-14">
             <p className="text-secondary font-medium mb-3 tracking-wide uppercase text-sm">
@@ -254,7 +254,7 @@ const Index = () => {
       <ProcessSection />
 
       {/* Right Place Section */}
-      <section className="py-20 lg:py-28 bg-secondary">
+      <section className="py-12 lg:py-16 bg-secondary">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
@@ -294,7 +294,7 @@ const Index = () => {
       </section>
 
       {/* Quote Section */}
-      <section className="py-16 lg:py-20 bg-background">
+      <section className="py-12 lg:py-16 bg-background">
         <div className="container mx-auto px-4">
           <blockquote className="max-w-3xl mx-auto text-center">
             <p className="font-heading text-2xl md:text-3xl font-medium leading-relaxed text-foreground mb-4">
